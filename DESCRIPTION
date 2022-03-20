@@ -1,15 +1,9 @@
 Package: olympicmarathon
 Title: Data and Tools to Work with Olympic Marathon Data
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "Michelle",
-           family = "Flesaker",
-           role = c("aut", "cre"),
-           email = "mflesaker@smith.edu")
-    person(given = "Georgia",
-           family - "Gans",
-           role = c("aut", "cre"),
-           email = "ggans@smith.edu")
+Authors@R: c(person("Michelle Flesaker", "Developer", role = c("aut", "cre"),
+                     email = "mflesaker@smith.edu"),
+              person("Georgia Gans", "Developer", role = "aut", email = "ggans@smith.edu"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Suggests: 
