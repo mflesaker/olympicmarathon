@@ -1,12 +1,15 @@
 Package: olympicmarathon
-Title: What the Package Does (One Line, Title Case)
+Title: Data and Tools to Work with Olympic Marathon Data
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Michelle",
+           family = "Flesaker",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "mflesaker@smith.edu")
+    person(given = "Georgia",
+           family - "Gans",
+           role = c("aut", "cre"),
+           email = "ggans@smith.edu")
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Suggests: 
