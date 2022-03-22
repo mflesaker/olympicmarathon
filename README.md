@@ -36,6 +36,13 @@ Load the package with the following code:
 library(olympicmarathon)
 ```
 
+## Available Tables
+
+-   `womens_2020_data`: dataset of the women who ran the 2020 Olympic
+    marathon
+-   `mens_2020_data`: dataset of the men who ran the 2020 Olympic
+    marathon
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
