@@ -4,7 +4,10 @@
 #' import_womens_data_2020()
 #' @export
 #' @import pdftools
-#' @import tidyverse
+#' @import dplyr
+#' @import tibble
+#' @import magrittr
+#' @import tidyr
 
 import_womens_data_2020 <- function() {
 

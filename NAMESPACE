@@ -2,6 +2,9 @@
 
 export("%>%")
 export(import_womens_data_2020)
+import(dplyr)
+import(magrittr)
 import(pdftools)
-import(tidyverse)
+import(tibble)
+import(tidyr)
 importFrom(magrittr,"%>%")
