@@ -1,4 +1,7 @@
-#' Imports data for women's marathon from 2020!
+#' Imports data for women's marathon from the 2020 Tokyo Olympics!
+#' @return a tibble with the ranked list of women's Olympic marathon runners from the 2020 Tokyo Olympics and associated times
+#' @examples
+#' import_womens_data_2020()
 #' @export
 #' @import pdftools
 #' @import tidyverse
