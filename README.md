@@ -43,3 +43,8 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 ## basic example code
 ```
+
+## Contributors
+
+-   [Michelle Flesaker](https://github.com/mflesaker)
+-   [Georgia Gans](https://github.com/georgiagans)
