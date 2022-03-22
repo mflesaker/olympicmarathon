@@ -16,8 +16,5 @@ RoxygenNote: 7.1.1
 URL: https://github.com/mflesaker/olympicmarathon
 BugReports: https://github.com/mflesaker/olympicmarathon/issues
 Imports:
-    pdftools,
-    magrittr,
-    tidyr,
-    tibble,
-    dplyr
+Depends: 
+    R (>= 2.10)
