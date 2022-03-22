@@ -47,7 +47,11 @@ library(olympicmarathon)
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-## basic example code
+
+## Generate the winner of the 2020 Olympic Women's Marathon
+
+womens_2020_data[[1,"name"]]
+  
 ```
 
 ## Contributors
