@@ -3,14 +3,28 @@
 \docType{data}
 \name{mens_2020_data}
 \alias{mens_2020_data}
-\title{This file contains data from 2020 Tokyo Olympics Men's Marathon!}
+\title{Men's 2020 Olympic marathon data}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 106 rows and 9 columns.
+An object of class tbl_df (inherits from tbl, data.frame) with 106 rows and 9 columns:
+\describe{
+\item{rank}{Finishing place based on race time}
+\item{name}{Competitor's Name}
+\item{nationality}{3 letter abbreviation of the country that the competitor is representing}
+\item{result}{The competitor's finishing time (hr:min:sec) (DNF if did not finish)}
+\item{gender}{Gender of the competitor (F = female, M = male)}
+\item{event}{The Olympic event that the entry corresponds to}
+\item{location}{The location of the Olympic Games}
+\item{year}{The year of the Olympic Games}
+\item{medal}{What medal the competitor earned, if any}
+}
 }
 \usage{
 mens_2020_data
 }
 \description{
-This file contains data from 2020 Tokyo Olympics Men's Marathon!
+This file contains data from the 2020 Tokyo Olympics Men's Marathon.
+}
+\examples{
+mens_2020_data
 }
 \keyword{datasets}
