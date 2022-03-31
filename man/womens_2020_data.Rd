@@ -3,9 +3,11 @@
 \docType{data}
 \name{womens_2020_data}
 \alias{womens_2020_data}
-\title{Women's 2020 Olympic marathon data}
+\alias{mens_2020_data}
+\alias{mens_2016_data}
+\title{Olympic Marathon Data by Gender and Year}
 \format{
-An object of class tbl_df (inherits from tbl, data.frame) with 88 rows and 9 columns:
+\code{womens_2020_data} is an object of class tbl_df (inherits from tbl, data.frame) with 88 rows and 9 columns:
 \describe{
 \item{rank}{Finishing place based on race time}
 \item{name}{Competitor's Name}
@@ -17,14 +19,28 @@ An object of class tbl_df (inherits from tbl, data.frame) with 88 rows and 9 col
 \item{year}{The year of the Olympic Games}
 \item{medal}{What medal the competitor earned, if any}
 }
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 106 rows and 9 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 155 rows and 9 columns.
 }
 \usage{
 womens_2020_data
+
+mens_2020_data
+
+mens_2016_data
 }
 \description{
-This file contains data from the 2020 Tokyo Olympics Women's Marathon.
+\code{womens_2020_data} contains data from the 2020 Tokyo Olympics Women's Marathon.
+
+\code{mens_2020_data} contains data from the 2020 Tokyo Olympics Men's Marathon.
+
+\code{mens_2016_data} contains data from the 2016 Rio de Janeiro Olympics Men's Marathon
 }
 \examples{
 womens_2020_data
+mens_2020_data
+mens_2016_data
 }
 \keyword{datasets}
