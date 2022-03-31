@@ -4,6 +4,7 @@
 \name{womens_2020_data}
 \alias{womens_2020_data}
 \alias{mens_2020_data}
+\alias{womens_2016_data}
 \alias{mens_2016_data}
 \title{Olympic Marathon Data by Gender and Year}
 \format{
@@ -12,15 +13,17 @@
 \item{rank}{Finishing place based on race time}
 \item{name}{Competitor's Name}
 \item{nationality}{3 letter abbreviation of the country that the competitor is representing}
-\item{result}{The competitor's finishing time (hr:min:sec) (DNF if did not finish)}
+\item{result}{The competitor's finishing time (hr:min:sec) (DNF if did not finish, DNS if did not start, DQ if disqualified)}
 \item{gender}{Gender of the competitor (F = female, M = male)}
 \item{event}{The Olympic event that the entry corresponds to}
 \item{location}{The location of the Olympic Games}
 \item{year}{The year of the Olympic Games}
-\item{medal}{What medal the competitor earned, if any}
+\item{medal}{What medal the competitor earned, if any (G = Gold, S = Silver, B = Bronze)}
 }
 
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 106 rows and 9 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 157 rows and 9 columns.
 
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 155 rows and 9 columns.
 }
@@ -29,18 +32,23 @@ womens_2020_data
 
 mens_2020_data
 
+womens_2016_data
+
 mens_2016_data
 }
 \description{
-\code{womens_2020_data} contains data from the 2020 Tokyo Olympics Women's Marathon.
+\code{womens_2020_data} contains data from the 2020 Tokyo Olympics Women's Marathon
 
-\code{mens_2020_data} contains data from the 2020 Tokyo Olympics Men's Marathon.
+\code{mens_2020_data} contains data from the 2020 Tokyo Olympics Men's Marathon
+
+\code{womens_2016_data} contains data from the 2016 Rio de Janeiro Olympics Women's Marathon
 
 \code{mens_2016_data} contains data from the 2016 Rio de Janeiro Olympics Men's Marathon
 }
 \examples{
 womens_2020_data
 mens_2020_data
+womens_2016_data
 mens_2016_data
 }
 \keyword{datasets}
