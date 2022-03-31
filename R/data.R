@@ -16,6 +16,7 @@
 #' \item{medal}{What medal the competitor earned, if any (G = Gold, S = Silver, B = Bronze)}
 #' }
 #' @examples womens_2020_data
+#' @source `womens_2020_data` comes from the [World Athletics website's 2020 women's marathon results page](https://www.worldathletics.org/results/olympic-games/2021/the-xxxii-olympic-games-athletics-7132391/women/marathon/final/result)
 "womens_2020_data"
 
 #' @rdname womens_2020_data
@@ -25,6 +26,7 @@
 #' @usage mens_2020_data
 #'
 #' @examples mens_2020_data
+#' @source `mens_2020_data` comes from the [World Athletics website's 2020 men's marathon results page](https://www.worldathletics.org/results/olympic-games/2021/the-xxxii-olympic-games-athletics-7132391/men/marathon/final/result)
 "mens_2020_data"
 
 #' @rdname womens_2020_data
@@ -34,6 +36,7 @@
 #' @usage womens_2016_data
 #'
 #' @examples womens_2016_data
+#' @source `womens_2016_data` comes from the [World Athletics website's 2016 women's marathon results page](https://www.worldathletics.org/results/olympic-games/2016/the-xxxi-olympic-games-7093747/women/marathon/final/result)
 "womens_2016_data"
 
 #' @rdname womens_2020_data
@@ -43,6 +46,7 @@
 #' @usage mens_2016_data
 #'
 #' @examples mens_2016_data
+#' @source `mens_2016_data` comes from the [World Athletics website's 2016 men's marathon results page](https://www.worldathletics.org/results/olympic-games/2016/the-xxxi-olympic-games-7093747/men/marathon/final/result)
 "mens_2016_data"
 
 

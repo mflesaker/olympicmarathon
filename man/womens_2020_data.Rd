@@ -27,6 +27,15 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 155 rows and 9 columns.
 }
+\source{
+\code{womens_2020_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2021/the-xxxii-olympic-games-athletics-7132391/women/marathon/final/result}{World Athletics website's 2020 women's marathon results page}
+
+\code{mens_2020_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2021/the-xxxii-olympic-games-athletics-7132391/men/marathon/final/result}{World Athletics website's 2020 men's marathon results page}
+
+\code{womens_2016_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2016/the-xxxi-olympic-games-7093747/women/marathon/final/result}{World Athletics website's 2016 women's marathon results page}
+
+\code{mens_2016_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2016/the-xxxi-olympic-games-7093747/men/marathon/final/result}{World Athletics website's 2016 men's marathon results page}
+}
 \usage{
 womens_2020_data
 
