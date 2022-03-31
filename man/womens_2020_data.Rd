@@ -8,7 +8,7 @@
 \alias{mens_2016_data}
 \title{Olympic Marathon Data by Gender and Year}
 \format{
-\code{womens_2020_data} is an object of class tbl_df (inherits from tbl, data.frame) with 88 rows and 9 columns:
+\code{womens_2020_data} is an object of class tbl_df (inherits from tbl, data.frame) with 88 rows and 9 columns
 \describe{
 \item{rank}{Finishing place based on race time}
 \item{name}{Competitor's Name}
@@ -21,11 +21,11 @@
 \item{medal}{What medal the competitor earned, if any (G = Gold, S = Silver, B = Bronze)}
 }
 
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 106 rows and 9 columns.
+\code{mens_2020_data} is an object of class tbl_df (inherits from tbl, data.frame) with 106 rows and 9 columns
 
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 157 rows and 9 columns.
+\code{womens_2016_data} is an object of class tbl_df (inherits from tbl, data.frame) with 157 rows and 9 columns
 
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 155 rows and 9 columns.
+\code{mens_2016_data} is an object of class tbl_df (inherits from tbl, data.frame) with 155 rows and 9 columns
 }
 \source{
 \code{womens_2020_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2021/the-xxxii-olympic-games-athletics-7132391/women/marathon/final/result}{World Athletics website's 2020 women's marathon results page}
