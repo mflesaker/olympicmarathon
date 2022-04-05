@@ -52,4 +52,26 @@
 #' @source `mens_2016_data` comes from the [World Athletics website's 2016 men's marathon results page](https://www.worldathletics.org/results/olympic-games/2016/the-xxxi-olympic-games-7093747/men/marathon/final/result)
 "mens_2016_data"
 
+#' @rdname womens_2020_data
+#' @docType data
+#' @description
+#' `womens_2012_data` contains data from the 2016 Rio de Janeiro Olympics Men's Marathon
+#' @usage womens_2012_data
+#' @format `womens_2012_data` is an object of class tbl_df (inherits from tbl, data.frame) with 115 rows and 9 columns
+#'
+#' @examples womens_2012_data
+#' @source `womens_2012_data` comes from the [World Athletics website's 2012 women's marathon results page](https://www.worldathletics.org/results/olympic-games/2012/the-xxx-olympic-games-6999193/women/marathon/final/result)
+"womens_2012_data"
+
+#' @rdname womens_2020_data
+#' @docType data
+#' @description
+#' `mens_2012_data` contains data from the 2016 Rio de Janeiro Olympics Men's Marathon
+#' @usage mens_2012_data
+#' @format `mens_2012_data` is an object of class tbl_df (inherits from tbl, data.frame) with 105 rows and 9 columns
+#'
+#' @examples mens_2012_data
+#' @source `mens_2012_data` comes from the [World Athletics website's 2012 men's marathon results page](https://www.worldathletics.org/results/olympic-games/2012/the-xxx-olympic-games-6999193/men/marathon/final/result)
+"mens_2012_data"
+
 
