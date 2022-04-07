@@ -77,6 +77,23 @@
 #' @rdname womens_2020_data
 #' @docType data
 #' @description
+#'
+#' `womens_2008_data` contains data from the 2008 Beijing Olympics Women's Marathon
+#' @usage womens_2008_data
+#' @format `womens_2008_data` is an object of class tbl_df (inherits from tbl, data.frame) with 82 rows and 9 columns
+#'
+#' @examples womens_2008_data
+#' @source `womens_2008_data` comes from the [World Athletics website's 2008 women's marathon results page](https://www.worldathletics.org/results/olympic-games/2008/the-xxix-olympic-games-6977748/women/marathon/final/result)
+"womens_2008_data"
+
+#' `mens_2008_data` contains data from the 2008 Beijing Olympics Men's Marathon
+#' @usage mens_2008_data
+#' @format `mens_2008_data` is an object of class tbl_df (inherits from tbl, data.frame) with 98 rows and 9 columns
+#'
+#' @examples mens_2008_data
+#' @source `mens_2008_data` comes from the [World Athletics website's 2008 men's marathon results page](https://www.worldathletics.org/results/olympic-games/2008/the-xxix-olympic-games-6977748/men/marathon/final/result)
+"mens_2008_data"
+
 #' `womens_2004_data` contains data from the 2004 Athens Olympics Women's Marathon
 #' @usage womens_2004_data
 #' @format `womens_2004_data` is an object of class tbl_df (inherits from tbl, data.frame) with 82 rows and 9 columns
