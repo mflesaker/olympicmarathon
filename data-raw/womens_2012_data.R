@@ -38,7 +38,9 @@ womens_2012_data <- womens_2012_data %>%
   rename(nationality = country) %>%
   select(rank, name, nationality, result) %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "PB", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "SB", str_sub(result, 0, -3), result))) %>%
-  mutate(gender = "W") %>%
+  mutate(result = ifelse(str_sub(result, -2, -1) == "NR", str_sub(result, 0, -3), result)) %>%
+  mutate(result = ifelse(str_sub(result, -2, -1) == "OR", str_sub(result, 0, -3), result)) %>%
+  mutate(gender = "F") %>%
   mutate(event = "Marathon Women") %>%
   mutate(location = "London") %>%
   mutate(year = 2012) %>%
