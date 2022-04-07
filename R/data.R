@@ -143,4 +143,26 @@
 #' @source `mens_2000_data` comes from the [World Athletics website's 2000 men's marathon results page](https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/men/marathon/final/result)
 "mens_2000_data"
 
+#' @rdname womens_2020_data
+#' @docType data
+#' @description
+#' `womens_1996_data` contains data from the 1996 Atlanta Olympics Women's Marathon
+#' @usage mens_1996_data
+#' @format `womens_1996_data` is an object of class tbl_df (inherits from tbl, data.frame) with 88 rows and 9 columns
+#'
+#' @examples womens_1996_data
+#' @source `womens_1996_data` comes from the [World Athletics website's 1996 women's marathon results page](https://www.worldathletics.org/competition/calendar-results/results/6961749?eventId=10229534&gender=W)
+"womens_1996_data"
+
+#' @rdname womens_2020_data
+#' @docType data
+#' @description
+#' `mens_1996_data` contains data from the 1996 Atlanta Olympics Men's Marathon
+#' @usage mens_1996_data
+#' @format `mens_1996_data` is an object of class tbl_df (inherits from tbl, data.frame) with 124 rows and 9 columns
+#'
+#' @examples mens_1996_data
+#' @source `mens_1996_data` comes from the [World Athletics website's 1996 men's marathon results page](https://www.worldathletics.org/competition/calendar-results/results/6961749?eventId=10229634&gender=M)
+"mens_1996_data"
+
 
