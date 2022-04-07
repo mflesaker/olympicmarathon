@@ -9,6 +9,8 @@
 \alias{womens_2012_data}
 \alias{mens_2012_data}
 \alias{womens_2008_data}
+\alias{mens_2008_data}
+\alias{womens_2004_data}
 \alias{mens_2004_data}
 \alias{womens_2000_data}
 \alias{mens_2000_data}
@@ -39,6 +41,10 @@
 
 \code{womens_2008_data} is an object of class tbl_df (inherits from tbl, data.frame) with 82 rows and 9 columns
 
+\code{mens_2008_data} is an object of class tbl_df (inherits from tbl, data.frame) with 98 rows and 9 columns
+
+\code{womens_2004_data} is an object of class tbl_df (inherits from tbl, data.frame) with 82 rows and 9 columns
+
 \code{mens_2004_data} is an object of class tbl_df (inherits from tbl, data.frame) with 102 rows and 9 columns
 
 \code{womens_2000_data} is an object of class tbl_df (inherits from tbl, data.frame) with 53 rows and 9 columns
@@ -59,6 +65,10 @@
 \code{mens_2012_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2012/the-xxx-olympic-games-6999193/men/marathon/final/result}{World Athletics website's 2012 men's marathon results page}
 
 \code{womens_2008_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2008/the-xxix-olympic-games-6977748/women/marathon/final/result}{World Athletics website's 2008 women's marathon results page}
+
+\code{mens_2008_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2008/the-xxix-olympic-games-6977748/men/marathon/final/result}{World Athletics website's 2008 men's marathon results page}
+
+\code{womens_2004_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2994/the-xxvii-olympic-games-6913163/women/marathon/final/result}{World Athletics website's 2004 women's marathon results page}
 
 \code{mens_2004_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2994/the-xxvii-olympic-games-6913163/men/marathon/final/result}{World Athletics website's 2004 men's marathon results page}
 
@@ -81,6 +91,10 @@ mens_2012_data
 
 womens_2008_data
 
+mens_2008_data
+
+womens_2004_data
+
 mens_2004_data
 
 womens_2000_data
@@ -102,6 +116,10 @@ mens_2000_data
 
 \code{womens_2008_data} contains data from the 2008 Beijing Olympics Women's Marathon
 
+\code{mens_2008_data} contains data from the 2008 Beijing Olympics Men's Marathon
+
+\code{womens_2004_data} contains data from the 2004 Athens Olympics Women's Marathon
+
 \code{mens_2004_data} contains data from the 2004 Athens Olympics Men's Marathon
 
 \code{womens_2000_data} contains data from the 2000 Sydney Olympics Women's Marathon
@@ -116,6 +134,8 @@ mens_2016_data
 womens_2012_data
 mens_2012_data
 womens_2008_data
+mens_2008_data
+womens_2004_data
 mens_2004_data
 womens_2000_data
 mens_2000_data
