@@ -1,6 +1,5 @@
 ## code to prepare `mens_2020_data` dataset goes here
 
-
 library(tidyverse)
 library(pdftools)
 
@@ -68,6 +67,13 @@ full_data_as_tibble_separated$bib_last_first <- full_data_as_tibble_separated$bi
 
 ## Renames the name column
 mens_2020_data <- full_data_as_tibble_separated %>%
-  rename(name = bib_last_first)
+  rename(name = bib_last_first) %>%
+  separate(name, into = c("last", "first", "extra_name", "extra_name2"), sep = " ") %>%
+  mutate(last_name = ifelse(str_detect(first,"[[:lower:]]") == FALSE, paste0(last, " ", first), last)) %>%
+  mutate(first_name = ifelse(str_detect(first,"[[:lower:]]") == FALSE, extra_name, first)) %>%
+  mutate(first_name = ifelse(is.na(extra_name2) == FALSE, paste0(first_name, " ", extra_name2), first_name)) %>%
+  mutate(last_name = str_to_title(last_name)) %>%
+  mutate(name = paste0(first_name, " ", last_name)) %>%
+  select(rank, name, nationality, result, gender, event, location, year, medal)
 
 usethis::use_data(mens_2020_data, overwrite = TRUE)
