@@ -8,6 +8,8 @@
 \alias{mens_2016_data}
 \alias{womens_2012_data}
 \alias{mens_2012_data}
+\alias{womens_2004_data}
+\alias{mens_2004_data}
 \title{Olympic Marathon Data by Gender and Year}
 \format{
 \code{womens_2020_data} is an object of class tbl_df (inherits from tbl, data.frame) with 88 rows and 9 columns
@@ -32,6 +34,10 @@
 \code{womens_2012_data} is an object of class tbl_df (inherits from tbl, data.frame) with 115 rows and 9 columns
 
 \code{mens_2012_data} is an object of class tbl_df (inherits from tbl, data.frame) with 105 rows and 9 columns
+
+\code{womens_2004_data} is an object of class tbl_df (inherits from tbl, data.frame) with 102 rows and 9 columns
+
+\code{mens_2004_data} is an object of class tbl_df (inherits from tbl, data.frame) with !!! rows and 9 columns
 }
 \source{
 \code{womens_2020_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2021/the-xxxii-olympic-games-athletics-7132391/women/marathon/final/result}{World Athletics website's 2020 women's marathon results page}
@@ -45,6 +51,10 @@
 \code{womens_2012_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2012/the-xxx-olympic-games-6999193/women/marathon/final/result}{World Athletics website's 2012 women's marathon results page}
 
 \code{mens_2012_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2012/the-xxx-olympic-games-6999193/men/marathon/final/result}{World Athletics website's 2012 men's marathon results page}
+
+\code{womens_2004_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2994/the-xxvii-olympic-games-6913163/women/marathon/final/result}{World Athletics website's 2004 women's marathon results page}
+
+\code{mens_2004_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2994/the-xxvii-olympic-games-6913163/men/marathon/final/result}{World Athletics website's 2004 men's marathon results page}
 }
 \usage{
 womens_2020_data
@@ -58,6 +68,10 @@ mens_2016_data
 womens_2012_data
 
 mens_2012_data
+
+womens_2004_data
+
+mens_2004_data
 }
 \description{
 \code{womens_2020_data} contains data from the 2020 Tokyo Olympics Women's Marathon
@@ -68,9 +82,13 @@ mens_2012_data
 
 \code{mens_2016_data} contains data from the 2016 Rio de Janeiro Olympics Men's Marathon
 
-\code{womens_2012_data} contains data from the 2016 Rio de Janeiro Olympics Men's Marathon
+\code{womens_2012_data} contains data from the 2012 London Olympics Women's Marathon
 
-\code{mens_2012_data} contains data from the 2016 Rio de Janeiro Olympics Men's Marathon
+\code{mens_2012_data} contains data from the 2012 London Olympics Men's Marathon
+
+\code{womens_2004_data} contains data from the 2004 Athens Olympics Women's Marathon
+
+\code{mens_2004_data} contains data from the 2004 Athens Olympics Men's Marathon
 }
 \examples{
 womens_2020_data
@@ -79,5 +97,7 @@ womens_2016_data
 mens_2016_data
 womens_2012_data
 mens_2012_data
+womens_2004_data
+mens_2004_data
 }
 \keyword{datasets}
