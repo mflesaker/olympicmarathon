@@ -55,7 +55,7 @@
 #' @rdname womens_2020_data
 #' @docType data
 #' @description
-#' `womens_2012_data` contains data from the 2016 Rio de Janeiro Olympics Men's Marathon
+#' `womens_2012_data` contains data from the 2012 London Olympics Men's Marathon
 #' @usage womens_2012_data
 #' @format `womens_2012_data` is an object of class tbl_df (inherits from tbl, data.frame) with 115 rows and 9 columns
 #'
@@ -66,7 +66,7 @@
 #' @rdname womens_2020_data
 #' @docType data
 #' @description
-#' `mens_2012_data` contains data from the 2016 Rio de Janeiro Olympics Men's Marathon
+#' `mens_2012_data` contains data from the 2012 London Olympics Men's Marathon
 #' @usage mens_2012_data
 #' @format `mens_2012_data` is an object of class tbl_df (inherits from tbl, data.frame) with 105 rows and 9 columns
 #'
@@ -74,4 +74,25 @@
 #' @source `mens_2012_data` comes from the [World Athletics website's 2012 men's marathon results page](https://www.worldathletics.org/results/olympic-games/2012/the-xxx-olympic-games-6999193/men/marathon/final/result)
 "mens_2012_data"
 
+#' @rdname womens_2020_data
+#' @docType data
+#' @description
+#' `mens_2008_data` contains data from the 2008 Beijing Olympics Men's Marathon
+#' @usage mens_2008_data
+#' @format `mens_2008_data` is an object of class tbl_df (inherits from tbl, data.frame) with 98 rows and 9 columns
+#'
+#' @examples mens_2008_data
+#' @source `mens_2008_data` comes from the [World Athletics website's 2008 men's marathon results page](https://www.worldathletics.org/results/olympic-games/2008/the-xxix-olympic-games-6977748/men/marathon/final/result)
+"mens_2008_data"
+
+#' @rdname womens_2020_data
+#' @docType data
+#' @description
+#' `womens_2008_data` contains data from the 2008 Beijing Olympics Women's Marathon
+#' @usage womens_2008_data
+#' @format `womens_2008_data` is an object of class tbl_df (inherits from tbl, data.frame) with 82 rows and 9 columns
+#'
+#' @examples womens_2008_data
+#' @source `womens_2008_data` comes from the [World Athletics website's 2008 women's marathon results page](https://www.worldathletics.org/results/olympic-games/2008/the-xxix-olympic-games-6977748/women/marathon/final/result)
+"womens_2008_data"
 
