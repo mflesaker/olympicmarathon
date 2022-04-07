@@ -49,6 +49,8 @@ womens_2012_data <- womens_2012_data %>%
   mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA))))
 
 womens_2012_data <- womens_2012_data %>%
-  filter(name != "NA")
+  filter(name != "NA") %>%
+  mutate(name = str_to_title(name)) %>%
+  mutate(rank = as.numeric(rank))
 
 usethis::use_data(womens_2012_data, overwrite = TRUE)

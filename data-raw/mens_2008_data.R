@@ -49,6 +49,8 @@ mens_2008_data <- mens_2008_data %>%
     mutate(rank = str_trim(rank, side = "right")) %>%
     mutate(name = str_trim(name, side = "right")) %>%
     mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
-    filter(name != "NA")
+    filter(name != "NA") %>%
+    mutate(name = str_to_title(name)) %>%
+    mutate(rank = as.numeric(rank))
 
   usethis::use_data(mens_2008_data, overwrite = TRUE)

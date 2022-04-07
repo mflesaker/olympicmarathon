@@ -4,17 +4,17 @@ library(lubridate)
 ## code from https://stackoverflow.com/questions/3195522/is-there-a-simple-way-in-r-to-extract-only-the-text-elements-of-an-html-page
 library(htm2txt)
 url <- 'https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/men/marathon/final/result'
-olympic_2000_raw_men <- gettxt(url)
+olympic_2004_raw_men <- gettxt(url)
 
-mens_2000_data <- olympic_2000_raw_men %>%
+mens_2004_data <- olympic_2004_raw_men %>%
   strsplit("\n")
 
-mens_2000_data <- as.character(mens_2000_data[[1]][233:431])
+mens_2004_data <- as.character(mens_2004_data[[1]][233:431])
 
 ## code from https://www.edureka.co/community/3900/how-to-extract-every-nth-element-of-a-vector-using-r
-mens_2000_data <- mens_2000_data[seq(1, length(mens_2000_data), 2)]
+mens_2004_data <- mens_2004_data[seq(1, length(mens_2004_data), 2)]
 
-mens_2000_data <- mens_2000_data %>%
+mens_2004_data <- mens_2004_data %>%
   as_tibble() %>%
   # separate names and times https://www.tutorialspoint.com/how-to-separate-string-and-a-numeric-value-in-r
   separate(value, into = c("rank_name_country", "result"), sep = "(?<=[a-zA-Z])\\s*(?=[0-9])") %>%
@@ -41,10 +41,12 @@ mens_2000_data <- mens_2000_data %>%
   mutate(gender = "M") %>%
   mutate(event = "Marathon Men") %>%
   mutate(location = "Athens") %>%
-  mutate(year = 2000) %>%
-  mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA))))
+  mutate(year = 2004) %>%
+  mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
+  mutate(name = str_to_title(name)) %>%
+  mutate(rank = as.numeric(rank))
 
-usethis::use_data(mens_2000_data, overwrite = TRUE)
+usethis::use_data(mens_2004_data, overwrite = TRUE)
 
 
 

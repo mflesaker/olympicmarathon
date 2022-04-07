@@ -76,6 +76,7 @@ womens_2020_data <- full_data_as_tibble_separated %>%
   mutate(first_name = ifelse(first_name == "la CAPANI", "Jovana", first_name)) %>%
   mutate(last_name = str_to_title(last_name)) %>%
   mutate(name = paste0(first_name, " ", last_name)) %>%
-  select(rank, name, nationality, result, gender, event, location, year, medal)
+  select(rank, name, nationality, result, gender, event, location, year, medal) %>%
+  mutate(rank = as.numeric(rank))
 
 usethis::use_data(womens_2020_data, overwrite = TRUE)

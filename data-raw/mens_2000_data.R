@@ -42,7 +42,9 @@ mens_2000_data <- mens_2000_data %>%
   mutate(event = "Marathon Men") %>%
   mutate(location = "Sydney") %>%
   mutate(year = 2000) %>%
-  mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA))))
+  mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
+  mutate(name = str_to_title(name)) %>%
+  mutate(rank = as.numeric(rank))
 
 usethis::use_data(mens_2000_data, overwrite = TRUE)
 

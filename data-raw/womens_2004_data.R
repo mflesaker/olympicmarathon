@@ -43,7 +43,9 @@ womens_2004_data <- womens_2004_data %>%
   mutate(event = "Marathon Women") %>%
   mutate(location = "Athens") %>%
   mutate(year = 2004) %>%
-  mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA))))
+  mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
+  mutate(name = str_to_title(name)) %>%
+  mutate(rank = as.numeric(rank))
 
 usethis::use_data(womens_2004_data, overwrite = TRUE)
 
