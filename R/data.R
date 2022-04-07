@@ -79,7 +79,7 @@
 #' @description
 #' `womens_2004_data` contains data from the 2004 Athens Olympics Women's Marathon
 #' @usage womens_2004_data
-#' @format `womens_2004_data` is an object of class tbl_df (inherits from tbl, data.frame) with 102 rows and 9 columns
+#' @format `womens_2004_data` is an object of class tbl_df (inherits from tbl, data.frame) with 82 rows and 9 columns
 #'
 #' @examples womens_2004_data
 #' @source `womens_2004_data` comes from the [World Athletics website's 2004 women's marathon results page](https://www.worldathletics.org/results/olympic-games/2994/the-xxvii-olympic-games-6913163/women/marathon/final/result)
@@ -90,10 +90,32 @@
 #' @description
 #' `mens_2004_data` contains data from the 2004 Athens Olympics Men's Marathon
 #' @usage mens_2004_data
-#' @format `mens_2004_data` is an object of class tbl_df (inherits from tbl, data.frame) with !!! rows and 9 columns
+#' @format `mens_2004_data` is an object of class tbl_df (inherits from tbl, data.frame) with 102 rows and 9 columns
 #'
 #' @examples mens_2004_data
 #' @source `mens_2004_data` comes from the [World Athletics website's 2004 men's marathon results page](https://www.worldathletics.org/results/olympic-games/2994/the-xxvii-olympic-games-6913163/men/marathon/final/result)
 "mens_2004_data"
+
+#' @rdname womens_2020_data
+#' @docType data
+#' @description
+#' `womens_2000_data` contains data from the 2000 Sydney Olympics Women's Marathon
+#' @usage womens_2000_data
+#' @format `womens_2000_data` is an object of class tbl_df (inherits from tbl, data.frame) with 53 rows and 9 columns
+#'
+#' @examples womens_2000_data
+#' @source `womens_2000_data` comes from the [World Athletics website's 2000 women's marathon results page](https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/women/marathon/final/result)
+"womens_2000_data"
+
+#' @rdname womens_2020_data
+#' @docType data
+#' @description
+#' `mens_2000_data` contains data from the 2000 Sydney Olympics Men's Marathon
+#' @usage mens_2000_data
+#' @format `mens_2000_data` is an object of class tbl_df (inherits from tbl, data.frame) with 100 rows and 9 columns
+#'
+#' @examples mens_2000_data
+#' @source `mens_2000_data` comes from the [World Athletics website's 2000 men's marathon results page](https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/men/marathon/final/result)
+"mens_2000_data"
 
 

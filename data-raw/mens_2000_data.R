@@ -40,7 +40,7 @@ mens_2000_data <- mens_2000_data %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "NR", str_sub(result, 0, -3), result)) %>%
   mutate(gender = "M") %>%
   mutate(event = "Marathon Men") %>%
-  mutate(location = "Athens") %>%
+  mutate(location = "Sydney") %>%
   mutate(year = 2000) %>%
   mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA))))
 

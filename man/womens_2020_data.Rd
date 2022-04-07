@@ -10,6 +10,8 @@
 \alias{mens_2012_data}
 \alias{womens_2004_data}
 \alias{mens_2004_data}
+\alias{womens_2000_data}
+\alias{mens_2000_data}
 \title{Olympic Marathon Data by Gender and Year}
 \format{
 \code{womens_2020_data} is an object of class tbl_df (inherits from tbl, data.frame) with 88 rows and 9 columns
@@ -35,9 +37,13 @@
 
 \code{mens_2012_data} is an object of class tbl_df (inherits from tbl, data.frame) with 105 rows and 9 columns
 
-\code{womens_2004_data} is an object of class tbl_df (inherits from tbl, data.frame) with 102 rows and 9 columns
+\code{womens_2004_data} is an object of class tbl_df (inherits from tbl, data.frame) with 82 rows and 9 columns
 
-\code{mens_2004_data} is an object of class tbl_df (inherits from tbl, data.frame) with !!! rows and 9 columns
+\code{mens_2004_data} is an object of class tbl_df (inherits from tbl, data.frame) with 102 rows and 9 columns
+
+\code{womens_2000_data} is an object of class tbl_df (inherits from tbl, data.frame) with 53 rows and 9 columns
+
+\code{mens_2000_data} is an object of class tbl_df (inherits from tbl, data.frame) with 100 rows and 9 columns
 }
 \source{
 \code{womens_2020_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2021/the-xxxii-olympic-games-athletics-7132391/women/marathon/final/result}{World Athletics website's 2020 women's marathon results page}
@@ -55,6 +61,10 @@
 \code{womens_2004_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2994/the-xxvii-olympic-games-6913163/women/marathon/final/result}{World Athletics website's 2004 women's marathon results page}
 
 \code{mens_2004_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2994/the-xxvii-olympic-games-6913163/men/marathon/final/result}{World Athletics website's 2004 men's marathon results page}
+
+\code{womens_2000_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/women/marathon/final/result}{World Athletics website's 2000 women's marathon results page}
+
+\code{mens_2000_data} comes from the \href{https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/men/marathon/final/result}{World Athletics website's 2000 men's marathon results page}
 }
 \usage{
 womens_2020_data
@@ -72,6 +82,10 @@ mens_2012_data
 womens_2004_data
 
 mens_2004_data
+
+womens_2000_data
+
+mens_2000_data
 }
 \description{
 \code{womens_2020_data} contains data from the 2020 Tokyo Olympics Women's Marathon
@@ -89,6 +103,10 @@ mens_2004_data
 \code{womens_2004_data} contains data from the 2004 Athens Olympics Women's Marathon
 
 \code{mens_2004_data} contains data from the 2004 Athens Olympics Men's Marathon
+
+\code{womens_2000_data} contains data from the 2000 Sydney Olympics Women's Marathon
+
+\code{mens_2000_data} contains data from the 2000 Sydney Olympics Men's Marathon
 }
 \examples{
 womens_2020_data
@@ -99,5 +117,7 @@ womens_2012_data
 mens_2012_data
 womens_2004_data
 mens_2004_data
+womens_2000_data
+mens_2000_data
 }
 \keyword{datasets}

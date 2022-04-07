@@ -3,18 +3,18 @@ library(lubridate)
 
 ## code from https://stackoverflow.com/questions/3195522/is-there-a-simple-way-in-r-to-extract-only-the-text-elements-of-an-html-page
 library(htm2txt)
-url <- 'https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/men/marathon/final/result'
-olympic_2000_raw_men <- gettxt(url)
+url <- 'https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/women/marathon/final/result'
+olympic_2000_raw_women <- gettxt(url)
 
-mens_2000_data <- olympic_2000_raw_men %>%
+womens_2000_data <- olympic_2000_raw_women %>%
   strsplit("\n")
 
-mens_2000_data <- as.character(mens_2000_data[[1]][233:431])
+womens_2000_data <- as.character(womens_2000_data[[1]][233:337])
 
 ## code from https://www.edureka.co/community/3900/how-to-extract-every-nth-element-of-a-vector-using-r
-mens_2000_data <- mens_2000_data[seq(1, length(mens_2000_data), 2)]
+womens_2000_data <- womens_2000_data[seq(1, length(womens_2000_data), 2)]
 
-mens_2000_data <- mens_2000_data %>%
+womens_2000_data <- womens_2000_data %>%
   as_tibble() %>%
   # separate names and times https://www.tutorialspoint.com/how-to-separate-string-and-a-numeric-value-in-r
   separate(value, into = c("rank_name_country", "result"), sep = "(?<=[a-zA-Z])\\s*(?=[0-9])") %>%
@@ -37,14 +37,12 @@ mens_2000_data <- mens_2000_data %>%
   rename(nationality = country) %>%
   select(rank, name, nationality, result) %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "PB", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "SB", str_sub(result, 0, -3), result))) %>%
-  mutate(result = ifelse(str_sub(result, -2, -1) == "NR", str_sub(result, 0, -3), result)) %>%
-  mutate(gender = "M") %>%
-  mutate(event = "Marathon Men") %>%
-  mutate(location = "Athens") %>%
+  mutate(result = ifelse(str_sub(result, -2, -1) == "CR", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "NR", str_sub(result, 0, -3), result))) %>%
+  mutate(gender = "F") %>%
+  mutate(event = "Marathon Women") %>%
+  mutate(location = "Sydney") %>%
   mutate(year = 2000) %>%
   mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA))))
 
-usethis::use_data(mens_2000_data, overwrite = TRUE)
-
-
+usethis::use_data(womens_2000_data, overwrite = TRUE)
 
