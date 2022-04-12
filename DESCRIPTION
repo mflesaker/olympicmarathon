@@ -3,7 +3,7 @@ Title: Data and Tools to Work with Olympic Marathon Data
 Version: 0.0.0.9000
 Authors@R: c(person("Michelle Flesaker", "Developer", role = c("aut", "cre"),
                      email = "michelle.flesaker@gmail.com"),
-              person("Georgia Gans", "Developer", role = "aut", email = "ggans@smith.edu"))
+              person("Georgia Gans", "Developer", role = "aut", email = "georgiagans@live.com"))
 Description: The purpose of this package is to provide Olympic marathon data over time via simple functions. Additionally, the package provides tools for analyzing this data visually and for extracting certain elements out of the data, such as the medalists over time. 
 License: MIT + file LICENSE
 Suggests: 
