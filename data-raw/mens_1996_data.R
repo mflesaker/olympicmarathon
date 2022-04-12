@@ -14,11 +14,17 @@ mens_1996_data <- as.character(mens_1996_data[[1]][100:223])
 mens_1996_data <- mens_1996_data %>%
   as_tibble()
 
+# vector of ranks of competitors who do not have full birthdays listed
+rank_vec = c("110", "101", "98", "85", "44")
+
 # separate names and times https://www.tutorialspoint.com/how-to-separate-string-and-a-numeric-value-in-r
 mens_1996_data <- mens_1996_data %>%
   mutate(rank = ifelse(str_sub(value, -3, -1) == "DNF", NA, str_sub(value, 1, 2))) %>%
   mutate(rank = ifelse(str_sub(rank, -1, -1) == ".", str_sub(rank, 1, 1), rank)) %>%
+  mutate(rank = ifelse(str_sub(value, 4, 4) == ".", str_sub(value, 1, 3), rank)) %>%
   mutate(name = ifelse(str_sub(value, -3, -1) == "DNF", str_sub(value, 1, -21), str_sub(value, 4, -25))) %>%
+  mutate(name = ifelse(rank %in% rank_vec, str_sub(value, 4, -17), name)) %>%
+  mutate(name = ifelse(str_sub(name, 1, 1) == ".", str_sub(name, 3, ), name)) %>%
   mutate(name = ifelse(str_sub(name, 1, 1) == " ", str_sub(name, 2, ), name)) %>%
   mutate(nationality = ifelse(str_sub(value, -3, -1) == "DNF", str_sub(value, -7, -5), str_sub(value, -11, -9))) %>%
   mutate(result = ifelse(str_sub(value, -3, -1) == "DNF", "DNF", str_sub(value, -7, -1))) %>%
