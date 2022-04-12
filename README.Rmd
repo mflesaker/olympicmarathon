@@ -52,7 +52,7 @@ This is a basic example which shows you how to solve a common problem:
 
 ## Generate the winner of the 2020 Olympic Women's Marathon
 
-womens_2020_data[[1,"name"]]
+olympic_marathon[[1,"rank"]]
   
 ```
 
