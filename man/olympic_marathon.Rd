@@ -19,7 +19,7 @@
 }
 }
 \source{
-\code{olympic_marathon} comes from the \href{https://www.worldathletics.org/competition/calendar-results?}{World Athletics website results page}
+\code{olympic_marathon} comes from the \href{https://www.worldathletics.org/competition/calendar-results?}{World Athletics website results page} and \href{https://www.olympiandatabase.com/}{Olympian Database}
 }
 \usage{
 olympic_marathon

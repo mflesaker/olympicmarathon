@@ -3,11 +3,268 @@ library(tidyverse)
 library(lubridate)
 library(htm2txt)
 
+## 1984
+
+## 1984 Men -------------------------------------------------------------------------------------------------------
+
+url <- "https://www.olympiandatabase.com/index.php?id=7446&L=1"
+olympic_1984_raw_men <- gettxt(url)
+
+mens_1984_data <- olympic_1984_raw_men %>%
+  strsplit("\n")
+
+mens_1984_data <- as.character(mens_1984_data[[1]][35:249])
+
+mens_1984_data <- mens_1984_data[seq(1, length(mens_1984_data), 2)]
+
+
+mens_1984_data[1] <- paste0("1. ", mens_1984_data[1])
+mens_1984_data[2] <- paste0("2. ", mens_1984_data[2])
+mens_1984_data[3] <- paste0("3. ", mens_1984_data[3])
+
+mens_1984_data <- mens_1984_data %>%
+  as_tibble() %>%
+  # separate names and times https://www.tutorialspoint.com/how-to-separate-string-and-a-numeric-value-in-r
+  separate(value, into = c("rank_name_country", "result"), sep = "(?<=[a-zA-Z])\\s*(?=[0-9])") %>%
+  mutate(rank_name_country = map(rank_name_country, gsub, pattern = "\\.", replacement = "")) %>%
+  separate(rank_name_country, into = c("rank", "name_country"), sep = "(?<=[0-9])\\s*(?=[a-zA-Z])") %>%
+  mutate(name_country = ifelse(rank == "33 Øivind Dahl NOR", "Øivind Dahl NOR", name_country)) %>%
+  mutate(rank = ifelse(rank == "33 Øivind Dahl NOR", "33", rank)) %>%
+  mutate(name_country = ifelse(str_sub(rank, -3, -1) %in% c("dnf", "dns"), rank, name_country)) %>%
+  mutate(rank = ifelse(str_sub(rank, -3, -1) %in% c("dnf", "dns"), NA, rank)) %>%
+  mutate(result = ifelse(str_sub(name_country, -3, -1) %in% c("dnf", "dns"), str_sub(name_country, -3, -1), result)) %>%
+  mutate(name_country = ifelse(str_sub(name_country, -3, -1) %in% c("dnf", "dns"), str_sub(name_country, 0, -4), name_country)) %>%
+  mutate(rank = as.numeric(rank)) %>%
+  mutate(result = ifelse(result %in% c("dns", "dnf"), str_to_upper(result), result)) %>%
+  mutate(result = map(result, gsub, pattern = "\\.", replacement = ":")) %>%
+  mutate(name_country = trimws(name_country)) %>%
+  mutate(nationality = str_sub(name_country, -3, -1)) %>%
+  mutate(name = str_sub(name_country, 0, -5)) %>%
+  mutate(gender = "M") %>%
+  mutate(event = "Marathon Men") %>%
+  mutate(location = "Los Angeles") %>%
+  mutate(year = 1984) %>%
+  mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
+  select(rank, name, nationality, result, gender, event, location, year, medal)
+
+
+## 1984 Women -------------------------------------------------------------------------------------------------------
+
+url <- "https://www.olympiandatabase.com/index.php?id=3200&L=1"
+olympic_1984_raw_women <- gettxt(url)
+
+womens_1984_data <- olympic_1984_raw_women %>%
+  strsplit("\n")
+
+womens_1984_data
+
+womens_1984_data <- as.character(womens_1984_data[[1]][35:133])
+
+womens_1984_data <- womens_1984_data[seq(1, length(womens_1984_data), 2)]
+
+womens_1984_data[1] <- paste0("1. ", womens_1984_data[1])
+womens_1984_data[2] <- paste0("2. ", womens_1984_data[2])
+womens_1984_data[3] <- paste0("3. ", womens_1984_data[3])
+
+womens_1984_data <- womens_1984_data %>%
+  as_tibble() %>%
+  # separate names and times https://www.tutorialspoint.com/how-to-separate-string-and-a-numeric-value-in-r
+  separate(value, into = c("rank_name_country", "result"), sep = "(?<=[a-zA-Z])\\s*(?=[0-9])") %>%
+  mutate(rank_name_country = map(rank_name_country, gsub, pattern = "\\.", replacement = "")) %>%
+  separate(rank_name_country, into = c("rank", "name_country"), sep = "(?<=[0-9])\\s*(?=[a-zA-Z])") %>%
+  mutate(name_country = ifelse(str_sub(rank, -3, -1) %in% c("dnf", "dns"), rank, name_country)) %>%
+  mutate(rank = ifelse(str_sub(rank, -3, -1) %in% c("dnf", "dns"), NA, rank)) %>%
+  mutate(result = ifelse(str_sub(name_country, -3, -1) %in% c("dnf", "dns"), str_sub(name_country, -3, -1), result)) %>%
+  mutate(name_country = ifelse(str_sub(name_country, -3, -1) %in% c("dnf", "dns"), str_sub(name_country, 0, -4), name_country)) %>%
+  mutate(rank = as.numeric(rank)) %>%
+  mutate(result = ifelse(result %in% c("dns", "dnf"), str_to_upper(result), result)) %>%
+  mutate(result = map(result, gsub, pattern = "\\.", replacement = ":")) %>%
+  mutate(name_country = trimws(name_country)) %>%
+  mutate(nationality = str_sub(name_country, -3, -1)) %>%
+  mutate(name = str_sub(name_country, 0, -5)) %>%
+  mutate(gender = "F") %>%
+  mutate(event = "Marathon Women") %>%
+  mutate(location = "Los Angeles") %>%
+  mutate(year = 1984) %>%
+  mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
+  select(rank, name, nationality, result, gender, event, location, year, medal)
+
+
+## 1988
+
+## 1988 Men -------------------------------------------------------------------------------------------------------
+
+url <- "https://www.olympiandatabase.com/index.php?id=7415&L=1"
+olympic_1988_raw_men <- gettxt(url)
+
+mens_1988_data <- olympic_1988_raw_men %>%
+  strsplit("\n")
+
+mens_1988_data <- as.character(mens_1988_data[[1]][35:267])
+
+mens_1988_data <- mens_1988_data[seq(1, length(mens_1988_data), 2)]
+
+
+mens_1988_data[1] <- paste0("1. ", mens_1988_data[1])
+mens_1988_data[2] <- paste0("2. ", mens_1988_data[2])
+mens_1988_data[3] <- paste0("3. ", mens_1988_data[3])
+
+mens_1988_data <- mens_1988_data %>%
+  as_tibble() %>%
+  # separate names and times https://www.tutorialspoint.com/how-to-separate-string-and-a-numeric-value-in-r
+  separate(value, into = c("rank_name_country", "result"), sep = "(?<=[a-zA-Z])\\s*(?=[0-9])") %>%
+  mutate(rank_name_country = map(rank_name_country, gsub, pattern = "\\.", replacement = "")) %>%
+  separate(rank_name_country, into = c("rank", "name_country"), sep = "(?<=[0-9])\\s*(?=[a-zA-Z])") %>%
+  mutate(name_country = ifelse(str_sub(rank, -3, -1) %in% c("dnf", "dns"), rank, name_country)) %>%
+  mutate(rank = ifelse(str_sub(rank, -3, -1) %in% c("dnf", "dns"), NA, rank)) %>%
+  mutate(result = ifelse(str_sub(name_country, -3, -1) %in% c("dnf", "dns"), str_sub(name_country, -3, -1), result)) %>%
+  mutate(name_country = ifelse(str_sub(name_country, -3, -1) %in% c("dnf", "dns"), str_sub(name_country, 0, -4), name_country)) %>%
+  mutate(rank = as.numeric(rank)) %>%
+  mutate(result = ifelse(result %in% c("dns", "dnf"), str_to_upper(result), result)) %>%
+  mutate(result = map(result, gsub, pattern = "\\.", replacement = ":")) %>%
+  mutate(name_country = trimws(name_country)) %>%
+  mutate(nationality = str_sub(name_country, -3, -1)) %>%
+  mutate(name = str_sub(name_country, 0, -5)) %>%
+  mutate(gender = "M") %>%
+  mutate(event = "Marathon Men") %>%
+  mutate(location = "Seoul") %>%
+  mutate(year = 1988) %>%
+  mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
+  select(rank, name, nationality, result, gender, event, location, year, medal)
+
+
+## 1988 Women -------------------------------------------------------------------------------------------------------
+
+url <- "https://www.olympiandatabase.com/index.php?id=7414&L=1"
+olympic_1988_raw_women <- gettxt(url)
+
+womens_1988_data <- olympic_1988_raw_women %>%
+  strsplit("\n")
+
+womens_1988_data
+
+womens_1988_data <- as.character(womens_1988_data[[1]][35:177])
+
+womens_1988_data <- womens_1988_data[seq(1, length(womens_1988_data), 2)]
+
+womens_1988_data[1] <- paste0("1. ", womens_1988_data[1])
+womens_1988_data[2] <- paste0("2. ", womens_1988_data[2])
+womens_1988_data[3] <- paste0("3. ", womens_1988_data[3])
+
+womens_1988_data <- womens_1988_data %>%
+  as_tibble() %>%
+  # separate names and times https://www.tutorialspoint.com/how-to-separate-string-and-a-numeric-value-in-r
+  separate(value, into = c("rank_name_country", "result"), sep = "(?<=[a-zA-Z])\\s*(?=[0-9])") %>%
+  mutate(rank_name_country = map(rank_name_country, gsub, pattern = "\\.", replacement = "")) %>%
+  separate(rank_name_country, into = c("rank", "name_country"), sep = "(?<=[0-9])\\s*(?=[a-zA-Z])") %>%
+  mutate(name_country = ifelse(str_sub(rank, -3, -1) %in% c("dnf", "dns"), rank, name_country)) %>%
+  mutate(rank = ifelse(str_sub(rank, -3, -1) %in% c("dnf", "dns"), NA, rank)) %>%
+  mutate(result = ifelse(str_sub(name_country, -3, -1) %in% c("dnf", "dns"), str_sub(name_country, -3, -1), result)) %>%
+  mutate(name_country = ifelse(str_sub(name_country, -3, -1) %in% c("dnf", "dns"), str_sub(name_country, 0, -4), name_country)) %>%
+  mutate(rank = as.numeric(rank)) %>%
+  mutate(result = ifelse(result %in% c("dns", "dnf"), str_to_upper(result), result)) %>%
+  mutate(result = map(result, gsub, pattern = "\\.", replacement = ":")) %>%
+  mutate(name_country = trimws(name_country)) %>%
+  mutate(nationality = str_sub(name_country, -3, -1)) %>%
+  mutate(name = str_sub(name_country, 0, -5)) %>%
+  mutate(gender = "F") %>%
+  mutate(event = "Marathon Women") %>%
+  mutate(location = "Seoul") %>%
+  mutate(year = 1988) %>%
+  mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
+  select(rank, name, nationality, result, gender, event, location, year, medal)
+
+
+
+## 1992
+
+## 1992 Men -------------------------------------------------------------------------------------------------------
+
+url <- "https://www.olympiandatabase.com/index.php?id=7377&L=1"
+olympic_1992_raw_men <- gettxt(url)
+
+mens_1992_data <- olympic_1992_raw_men %>%
+  strsplit("\n")
+
+mens_1992_data <- as.character(mens_1992_data[[1]][35:253])
+
+mens_1992_data <- mens_1992_data[seq(1, length(mens_1992_data), 2)]
+
+
+mens_1992_data[1] <- paste0("1. ", mens_1992_data[1])
+mens_1992_data[2] <- paste0("2. ", mens_1992_data[2])
+mens_1992_data[3] <- paste0("3. ", mens_1992_data[3])
+
+mens_1992_data <- mens_1992_data %>%
+  as_tibble() %>%
+  # separate names and times https://www.tutorialspoint.com/how-to-separate-string-and-a-numeric-value-in-r
+  separate(value, into = c("rank_name_country", "result"), sep = "(?<=[a-zA-Z])\\s*(?=[0-9])") %>%
+  mutate(rank_name_country = map(rank_name_country, gsub, pattern = "\\.", replacement = "")) %>%
+  separate(rank_name_country, into = c("rank", "name_country"), sep = "(?<=[0-9])\\s*(?=[a-zA-Z])") %>%
+  mutate(name_country = ifelse(str_sub(rank, -3, -1) %in% c("dnf", "dns"), rank, name_country)) %>%
+  mutate(rank = ifelse(str_sub(rank, -3, -1) %in% c("dnf", "dns"), NA, rank)) %>%
+  mutate(result = ifelse(str_sub(name_country, -3, -1) %in% c("dnf", "dns"), str_sub(name_country, -3, -1), result)) %>%
+  mutate(name_country = ifelse(str_sub(name_country, -3, -1) %in% c("dnf", "dns"), str_sub(name_country, 0, -4), name_country)) %>%
+  mutate(rank = as.numeric(rank)) %>%
+  mutate(result = ifelse(result %in% c("dns", "dnf"), str_to_upper(result), result)) %>%
+  mutate(result = map(result, gsub, pattern = "\\.", replacement = ":")) %>%
+  mutate(name_country = trimws(name_country)) %>%
+  mutate(nationality = str_sub(name_country, -3, -1)) %>%
+  mutate(name = str_sub(name_country, 0, -5)) %>%
+  mutate(gender = "M") %>%
+  mutate(event = "Marathon Men") %>%
+  mutate(location = "Barcelona") %>%
+  mutate(year = 1992) %>%
+  mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
+  select(rank, name, nationality, result, gender, event, location, year, medal)
+
+## 1992 Women -------------------------------------------------------------------------------------------------------
+
+url <- "https://www.olympiandatabase.com/index.php?id=7376&L=1"
+olympic_1992_raw_women <- gettxt(url)
+
+womens_1992_data <- olympic_1992_raw_women %>%
+  strsplit("\n")
+
+womens_1992_data <- as.character(womens_1992_data[[1]][35:125])
+
+womens_1992_data <- womens_1992_data[seq(1, length(womens_1992_data), 2)]
+
+
+womens_1992_data[1] <- paste0("1. ", womens_1992_data[1])
+womens_1992_data[2] <- paste0("2. ", womens_1992_data[2])
+womens_1992_data[3] <- paste0("3. ", womens_1992_data[3])
+
+womens_1992_data <- womens_1992_data %>%
+  as_tibble() %>%
+  # separate names and times https://www.tutorialspoint.com/how-to-separate-string-and-a-numeric-value-in-r
+  separate(value, into = c("rank_name_country", "result"), sep = "(?<=[a-zA-Z])\\s*(?=[0-9])") %>%
+  mutate(rank_name_country = map(rank_name_country, gsub, pattern = "\\.", replacement = "")) %>%
+  separate(rank_name_country, into = c("rank", "name_country"), sep = "(?<=[0-9])\\s*(?=[a-zA-Z])") %>%
+  mutate(rank = map(rank, gsub, pattern = "\\(23539\\) dq\\(d\\)\\*", replacement = "\\.dq")) %>%
+  mutate(name_country = ifelse(str_sub(rank, -3, -1) %in% c("dnf", "dns", ".dq"), rank, name_country)) %>%
+  mutate(rank = ifelse(str_sub(rank, -3, -1) %in% c("dnf", "dns", ".dq"), NA, rank)) %>%
+  mutate(result = ifelse(str_sub(name_country, -3, -1) %in% c("dnf", "dns", ".dq"), str_sub(name_country, -3, -1), result)) %>%
+  mutate(name_country = ifelse(str_sub(name_country, -3, -1) %in% c("dnf", "dns", ".dq"), str_sub(name_country, 0, -4), name_country)) %>%
+  mutate(rank = as.numeric(rank)) %>%
+  mutate(result = ifelse(result %in% c("dns", "dnf", ".dq"), str_to_upper(result), result)) %>%
+  mutate(result = ifelse(result == ".DQ", "DQ", result)) %>%
+  mutate(result = map(result, gsub, pattern = "\\.", replacement = ":")) %>%
+  mutate(name_country = trimws(name_country)) %>%
+  mutate(nationality = str_sub(name_country, -3, -1)) %>%
+  mutate(name = str_sub(name_country, 0, -5)) %>%
+  mutate(gender = "F") %>%
+  mutate(event = "Marathon Women") %>%
+  mutate(location = "Barcelona") %>%
+  mutate(year = 1992) %>%
+  mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
+  select(rank, name, nationality, result, gender, event, location, year, medal)
+
 ## 1996
 
 ## 1996 Men -------------------------------------------------------------------------------------------------------
 
-url <- 'https://www.worldathletics.org/competition/calendar-results/results/6961749?eventId=10229634&gender=M'
+url <- "https://www.worldathletics.org/competition/calendar-results/results/6961749?eventId=10229634&gender=M"
 olympic_1996_raw_men <- gettxt(url)
 
 mens_1996_data <- olympic_1996_raw_men %>%
@@ -19,7 +276,7 @@ mens_1996_data <- mens_1996_data %>%
   as_tibble()
 
 # vector of ranks of competitors who do not have full birthdays listed
-rank_vec = c("110", "101", "98", "85", "44")
+rank_vec <- c("110", "101", "98", "85", "44")
 
 # separate names and times https://www.tutorialspoint.com/how-to-separate-string-and-a-numeric-value-in-r
 mens_1996_data <- mens_1996_data %>%
@@ -43,7 +300,7 @@ mens_1996_data <- mens_1996_data %>%
 
 ## 1996 Women -----------------------------------------------------------------------------------------------------
 
-url <- 'https://www.worldathletics.org/competition/calendar-results/results/6961749?eventId=10229534&gender=W'
+url <- "https://www.worldathletics.org/competition/calendar-results/results/6961749?eventId=10229534&gender=W"
 olympic_1996_raw_women <- gettxt(url)
 
 womens_1996_data <- olympic_1996_raw_women %>%
@@ -82,7 +339,7 @@ womens_1996_data <- womens_1996_data %>%
 
 
 ## code from https://stackoverflow.com/questions/3195522/is-there-a-simple-way-in-r-to-extract-only-the-text-elements-of-an-html-page
-url <- 'https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/men/marathon/final/result'
+url <- "https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/men/marathon/final/result"
 olympic_2000_raw_men <- gettxt(url)
 
 mens_2000_data <- olympic_2000_raw_men %>%
@@ -102,17 +359,23 @@ mens_2000_data <- mens_2000_data %>%
   mutate(rank = ifelse(str_sub(rank, -3, -1) %in% c("DNF", "DNS"), NA, rank)) %>%
   ## stringr code from https://stackoverflow.com/questions/7963898/extracting-the-last-n-characters-from-a-string-in-r
   mutate(country = ifelse(str_sub(name_country, -3, -1) == "DNS", str_sub(name_country, -7, -5),
-                          ifelse(str_sub(name_country, -3, -1) == "DNF",
-                                 str_sub(name_country, -7, -5),
-                                 str_sub(name_country, -3, -1)))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, -7, -5),
+      str_sub(name_country, -3, -1)
+    )
+  )) %>%
   mutate(name = ifelse(str_sub(name_country, -3, -1) == "DNS",
-                       str_sub(name_country, 0, -9),
-                       ifelse(str_sub(name_country, -3, -1) == "DNF",
-                              str_sub(name_country, 0, -9),
-                              str_sub(name_country, 0, -4)))) %>%
+    str_sub(name_country, 0, -9),
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, 0, -9),
+      str_sub(name_country, 0, -4)
+    )
+  )) %>%
   mutate(result = ifelse(str_sub(name_country, -3, -1) == "DNS", "DNS",
-                         ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
-                                result))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
+      result
+    )
+  )) %>%
   rename(nationality = country) %>%
   select(rank, name, nationality, result) %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "PB", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "SB", str_sub(result, 0, -3), result))) %>%
@@ -127,7 +390,7 @@ mens_2000_data <- mens_2000_data %>%
 
 ## 2000 Women ----------------------------------------------------------------------------------------------------
 
-url <- 'https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/women/marathon/final/result'
+url <- "https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/women/marathon/final/result"
 olympic_2000_raw_women <- gettxt(url)
 
 womens_2000_data <- olympic_2000_raw_women %>%
@@ -147,17 +410,23 @@ womens_2000_data <- womens_2000_data %>%
   mutate(rank = ifelse(str_sub(rank, -3, -1) %in% c("DNF", "DNS"), NA, rank)) %>%
   ## stringr code from https://stackoverflow.com/questions/7963898/extracting-the-last-n-characters-from-a-string-in-r
   mutate(country = ifelse(str_sub(name_country, -3, -1) == "DNS", str_sub(name_country, -7, -5),
-                          ifelse(str_sub(name_country, -3, -1) == "DNF",
-                                 str_sub(name_country, -7, -5),
-                                 str_sub(name_country, -3, -1)))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, -7, -5),
+      str_sub(name_country, -3, -1)
+    )
+  )) %>%
   mutate(name = ifelse(str_sub(name_country, -3, -1) == "DNS",
-                       str_sub(name_country, 0, -9),
-                       ifelse(str_sub(name_country, -3, -1) == "DNF",
-                              str_sub(name_country, 0, -9),
-                              str_sub(name_country, 0, -4)))) %>%
+    str_sub(name_country, 0, -9),
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, 0, -9),
+      str_sub(name_country, 0, -4)
+    )
+  )) %>%
   mutate(result = ifelse(str_sub(name_country, -3, -1) == "DNS", "DNS",
-                         ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
-                                result))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
+      result
+    )
+  )) %>%
   rename(nationality = country) %>%
   select(rank, name, nationality, result) %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "PB", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "SB", str_sub(result, 0, -3), result))) %>%
@@ -174,7 +443,7 @@ womens_2000_data <- womens_2000_data %>%
 
 ## 2004 Men -------------------------------------------------------------------------------------------------------
 
-url <- 'https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/men/marathon/final/result'
+url <- "https://www.worldathletics.org/results/olympic-games/2004/the-xxvi-olympic-games-6951910/men/marathon/final/result"
 olympic_2004_raw_men <- gettxt(url)
 
 mens_2004_data <- olympic_2004_raw_men %>%
@@ -194,17 +463,23 @@ mens_2004_data <- mens_2004_data %>%
   mutate(rank = ifelse(str_sub(rank, -3, -1) %in% c("DNF", "DNS"), NA, rank)) %>%
   ## stringr code from https://stackoverflow.com/questions/7963898/extracting-the-last-n-characters-from-a-string-in-r
   mutate(country = ifelse(str_sub(name_country, -3, -1) == "DNS", str_sub(name_country, -7, -5),
-                          ifelse(str_sub(name_country, -3, -1) == "DNF",
-                                 str_sub(name_country, -7, -5),
-                                 str_sub(name_country, -3, -1)))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, -7, -5),
+      str_sub(name_country, -3, -1)
+    )
+  )) %>%
   mutate(name = ifelse(str_sub(name_country, -3, -1) == "DNS",
-                       str_sub(name_country, 0, -9),
-                       ifelse(str_sub(name_country, -3, -1) == "DNF",
-                              str_sub(name_country, 0, -9),
-                              str_sub(name_country, 0, -4)))) %>%
+    str_sub(name_country, 0, -9),
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, 0, -9),
+      str_sub(name_country, 0, -4)
+    )
+  )) %>%
   mutate(result = ifelse(str_sub(name_country, -3, -1) == "DNS", "DNS",
-                         ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
-                                result))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
+      result
+    )
+  )) %>%
   rename(nationality = country) %>%
   select(rank, name, nationality, result) %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "PB", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "SB", str_sub(result, 0, -3), result))) %>%
@@ -220,7 +495,7 @@ mens_2004_data <- mens_2004_data %>%
 
 ## 2004 Women -------------------------------------------------------------------------------------------------------
 
-url <- 'https://www.worldathletics.org/results/olympic-games/2994/the-xxvii-olympic-games-6913163/women/marathon/final/result'
+url <- "https://www.worldathletics.org/results/olympic-games/2994/the-xxvii-olympic-games-6913163/women/marathon/final/result"
 olympic_2004_raw_women <- gettxt(url)
 
 womens_2004_data <- olympic_2004_raw_women %>%
@@ -242,17 +517,23 @@ womens_2004_data <- womens_2004_data %>%
   mutate(rank = ifelse(str_sub(rank, -3, -1) %in% c("DNF", "DNS"), NA, rank)) %>%
   ## stringr code from https://stackoverflow.com/questions/7963898/extracting-the-last-n-characters-from-a-string-in-r
   mutate(country = ifelse(str_sub(name_country, -3, -1) == "DNS", str_sub(name_country, -7, -5),
-                          ifelse(str_sub(name_country, -3, -1) == "DNF",
-                                 str_sub(name_country, -7, -5),
-                                 str_sub(name_country, -3, -1)))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, -7, -5),
+      str_sub(name_country, -3, -1)
+    )
+  )) %>%
   mutate(name = ifelse(str_sub(name_country, -3, -1) == "DNS",
-                       str_sub(name_country, 0, -9),
-                       ifelse(str_sub(name_country, -3, -1) == "DNF",
-                              str_sub(name_country, 0, -9),
-                              str_sub(name_country, 0, -4)))) %>%
+    str_sub(name_country, 0, -9),
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, 0, -9),
+      str_sub(name_country, 0, -4)
+    )
+  )) %>%
   mutate(result = ifelse(str_sub(name_country, -3, -1) == "DNS", "DNS",
-                         ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
-                                result))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
+      result
+    )
+  )) %>%
   rename(nationality = country) %>%
   select(rank, name, nationality, result) %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "PB", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "SB", str_sub(result, 0, -3), result))) %>%
@@ -270,7 +551,7 @@ womens_2004_data <- womens_2004_data %>%
 
 ## 2008 Men -------------------------------------------------------------------------------------------------------
 
-url <- 'https://www.worldathletics.org/results/olympic-games/2008/the-xxix-olympic-games-6977748/men/marathon/final/result'
+url <- "https://www.worldathletics.org/results/olympic-games/2008/the-xxix-olympic-games-6977748/men/marathon/final/result"
 olympic_2008_raw_men <- gettxt(url)
 
 mens_2008_data <- olympic_2008_raw_men %>%
@@ -291,20 +572,27 @@ mens_2008_data <- mens_2008_data %>%
   separate(rank_number_name_country, into = c("rank_number", "name_country"), sep = "(?<=[0-9])\\s*(?=[a-zA-Z])") %>%
   ## stringr code from https://stackoverflow.com/questions/7963898/extracting-the-last-n-characters-from-a-string-in-r
   mutate(rank = ifelse(str_sub(rank_number, -2, -1) == "DQ", NA,
-                       ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS", NA, rank_number))) %>%
+    ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS", NA, rank_number)
+  )) %>%
   mutate(country = ifelse(str_sub(rank_number, -2, -1) == "DQ", str_sub(name_country, -6, -3),
-                          ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS",
-                                 str_sub(rank_number, -7, -4),
-                                 str_sub(name_country, -3, -1)))) %>%
+    ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS",
+      str_sub(rank_number, -7, -4),
+      str_sub(name_country, -3, -1)
+    )
+  )) %>%
   mutate(name = ifelse(str_sub(rank_number, -2, -1) == "DQ",
-                       str_sub(name_country, 0, -7),
-                       ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS",
-                              str_sub(rank_number, 0, -8),
-                              str_sub(name_country, 0, -4)))) %>%
+    str_sub(name_country, 0, -7),
+    ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS",
+      str_sub(rank_number, 0, -8),
+      str_sub(name_country, 0, -4)
+    )
+  )) %>%
   mutate(result = ifelse(str_sub(rank_number, -2, -1) == "DQ", "DQ",
-                         ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS",
-                                str_sub(rank_number, -3, -1),
-                                result))) %>%
+    ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS",
+      str_sub(rank_number, -3, -1),
+      result
+    )
+  )) %>%
   rename(nationality = country) %>%
   select(rank, name, nationality, result) %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "PB", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "SB", str_sub(result, 0, -3), result))) %>%
@@ -323,7 +611,7 @@ mens_2008_data <- mens_2008_data %>%
 
 ## 2008 Women -------------------------------------------------------------------------------------------------------
 
-url <- 'https://www.worldathletics.org/results/olympic-games/2008/the-xxix-olympic-games-6977748/women/marathon/final/result'
+url <- "https://www.worldathletics.org/results/olympic-games/2008/the-xxix-olympic-games-6977748/women/marathon/final/result"
 olympic_2008_raw_women <- gettxt(url)
 
 womens_2008_data <- olympic_2008_raw_women %>%
@@ -344,20 +632,27 @@ womens_2008_data <- womens_2008_data %>%
   separate(rank_number_name_country, into = c("rank_number", "name_country"), sep = "(?<=[0-9])\\s*(?=[a-zA-Z])") %>%
   ## stringr code from https://stackoverflow.com/questions/7963898/extracting-the-last-n-characters-from-a-string-in-r
   mutate(rank = ifelse(str_sub(rank_number, -2, -1) == "DQ", NA,
-                       ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS", NA, rank_number))) %>%
+    ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS", NA, rank_number)
+  )) %>%
   mutate(country = ifelse(str_sub(rank_number, -2, -1) == "DQ", str_sub(name_country, -6, -3),
-                          ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS",
-                                 str_sub(rank_number, -7, -4),
-                                 str_sub(name_country, -3, -1)))) %>%
+    ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS",
+      str_sub(rank_number, -7, -4),
+      str_sub(name_country, -3, -1)
+    )
+  )) %>%
   mutate(name = ifelse(str_sub(rank_number, -2, -1) == "DQ",
-                       str_sub(name_country, 0, -7),
-                       ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS",
-                              str_sub(rank_number, 0, -8),
-                              str_sub(name_country, 0, -4)))) %>%
+    str_sub(name_country, 0, -7),
+    ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS",
+      str_sub(rank_number, 0, -8),
+      str_sub(name_country, 0, -4)
+    )
+  )) %>%
   mutate(result = ifelse(str_sub(rank_number, -2, -1) == "DQ", "DQ",
-                         ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS",
-                                str_sub(rank_number, -3, -1),
-                                result))) %>%
+    ifelse(str_sub(rank_number, -3, -1) == "DNF" | str_sub(rank_number, -3, -1) == "DNS",
+      str_sub(rank_number, -3, -1),
+      result
+    )
+  )) %>%
   rename(nationality = country) %>%
   select(rank, name, nationality, result) %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "PB", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "SB", str_sub(result, 0, -3), result))) %>%
@@ -379,7 +674,7 @@ womens_2008_data <- womens_2008_data %>%
 
 ## 2012 Men -------------------------------------------------------------------------------------------------------
 
-url <- 'https://www.worldathletics.org/results/olympic-games/2012/the-xxx-olympic-games-6999193/men/marathon/final/result'
+url <- "https://www.worldathletics.org/results/olympic-games/2012/the-xxx-olympic-games-6999193/men/marathon/final/result"
 olympic_2012_raw_men <- gettxt(url)
 
 mens_2012_data <- olympic_2012_raw_men %>%
@@ -398,19 +693,26 @@ mens_2012_data <- mens_2012_data %>%
   separate(rank_number_name_country, into = c("rank_number", "name_country"), sep = "(?<=[0-9])\\s*(?=[a-zA-Z])") %>%
   ## stringr code from https://stackoverflow.com/questions/7963898/extracting-the-last-n-characters-from-a-string-in-r
   mutate(rank = ifelse(str_sub(name_country, -2, -1) == "DQ", NA,
-                       ifelse(str_sub(name_country, -3, -1) == "DNF", NA, str_sub(rank_number, 0, -5)))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF", NA, str_sub(rank_number, 0, -5))
+  )) %>%
   mutate(country = ifelse(str_sub(name_country, -2, -1) == "DQ", str_sub(name_country, -6, -3),
-                          ifelse(str_sub(name_country, -3, -1) == "DNF",
-                                 str_sub(name_country, -7, -4),
-                                 str_sub(name_country, -3, -1)))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, -7, -4),
+      str_sub(name_country, -3, -1)
+    )
+  )) %>%
   mutate(name = ifelse(str_sub(name_country, -2, -1) == "DQ",
-                       str_sub(name_country, 0, -7),
-                       ifelse(str_sub(name_country, -3, -1) == "DNF",
-                              str_sub(name_country, 0, -8),
-                              str_sub(name_country, 0, -4)))) %>%
+    str_sub(name_country, 0, -7),
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, 0, -8),
+      str_sub(name_country, 0, -4)
+    )
+  )) %>%
   mutate(result = ifelse(str_sub(name_country, -2, -1) == "DQ", "DQ",
-                         ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
-                                result))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
+      result
+    )
+  )) %>%
   rename(nationality = country) %>%
   select(rank, name, nationality, result) %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "PB", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "SB", str_sub(result, 0, -3), result))) %>%
@@ -430,7 +732,7 @@ mens_2012_data <- mens_2012_data %>%
 
 ## 2012 Women -------------------------------------------------------------------------------------------------------
 
-url <- 'https://www.worldathletics.org/results/olympic-games/2012/the-xxx-olympic-games-6999193/women/marathon/final/result'
+url <- "https://www.worldathletics.org/results/olympic-games/2012/the-xxx-olympic-games-6999193/women/marathon/final/result"
 olympic_2012_raw_women <- gettxt(url)
 
 womens_2012_data <- olympic_2012_raw_women %>%
@@ -449,19 +751,26 @@ womens_2012_data <- womens_2012_data %>%
   separate(rank_number_name_country, into = c("rank_number", "name_country"), sep = "(?<=[0-9])\\s*(?=[a-zA-Z])") %>%
   ## stringr code from https://stackoverflow.com/questions/7963898/extracting-the-last-n-characters-from-a-string-in-r
   mutate(rank = ifelse(str_sub(name_country, -2, -1) == "DQ", NA,
-                       ifelse(str_sub(name_country, -3, -1) == "DNF", NA, str_sub(rank_number, 0, -5)))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF", NA, str_sub(rank_number, 0, -5))
+  )) %>%
   mutate(country = ifelse(str_sub(name_country, -2, -1) == "DQ", str_sub(name_country, -6, -3),
-                          ifelse(str_sub(name_country, -3, -1) == "DNF",
-                                 str_sub(name_country, -7, -4),
-                                 str_sub(name_country, -3, -1)))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, -7, -4),
+      str_sub(name_country, -3, -1)
+    )
+  )) %>%
   mutate(name = ifelse(str_sub(name_country, -2, -1) == "DQ",
-                       str_sub(name_country, 0, -7),
-                       ifelse(str_sub(name_country, -3, -1) == "DNF",
-                              str_sub(name_country, 0, -8),
-                              str_sub(name_country, 0, -4)))) %>%
+    str_sub(name_country, 0, -7),
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, 0, -8),
+      str_sub(name_country, 0, -4)
+    )
+  )) %>%
   mutate(result = ifelse(str_sub(name_country, -2, -1) == "DQ", "DQ",
-                         ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
-                                result))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
+      result
+    )
+  )) %>%
   rename(nationality = country) %>%
   select(rank, name, nationality, result) %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "PB", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "SB", str_sub(result, 0, -3), result))) %>%
@@ -486,7 +795,7 @@ womens_2012_data <- womens_2012_data %>%
 
 ## 2016 Men -------------------------------------------------------------------------------------------------------
 
-url <- 'https://www.worldathletics.org/results/olympic-games/2016/the-xxxi-olympic-games-7093747/men/marathon/final/result'
+url <- "https://www.worldathletics.org/results/olympic-games/2016/the-xxxi-olympic-games-7093747/men/marathon/final/result"
 olympic_2016_raw_men <- gettxt(url)
 
 mens_2016_data <- olympic_2016_raw_men %>%
@@ -505,19 +814,26 @@ mens_2016_data <- mens_2016_data %>%
   separate(rank_number_name_country, into = c("rank_number", "name_country"), sep = "(?<=[0-9])\\s*(?=[a-zA-Z])") %>%
   ## stringr code from https://stackoverflow.com/questions/7963898/extracting-the-last-n-characters-from-a-string-in-r
   mutate(rank = ifelse(str_sub(name_country, -2, -1) == "DQ", NA,
-                       ifelse(str_sub(name_country, -3, -1) == "DNF", NA, str_sub(rank_number, 0, -5)))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF", NA, str_sub(rank_number, 0, -5))
+  )) %>%
   mutate(country = ifelse(str_sub(name_country, -2, -1) == "DQ", str_sub(name_country, -6, -3),
-                          ifelse(str_sub(name_country, -3, -1) == "DNF",
-                                 str_sub(name_country, -7, -4),
-                                 str_sub(name_country, -3, -1)))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, -7, -4),
+      str_sub(name_country, -3, -1)
+    )
+  )) %>%
   mutate(name = ifelse(str_sub(name_country, -2, -1) == "DQ",
-                       str_sub(name_country, 0, -7),
-                       ifelse(str_sub(name_country, -3, -1) == "DNF",
-                              str_sub(name_country, 0, -8),
-                              str_sub(name_country, 0, -4)))) %>%
+    str_sub(name_country, 0, -7),
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, 0, -8),
+      str_sub(name_country, 0, -4)
+    )
+  )) %>%
   mutate(result = ifelse(str_sub(name_country, -2, -1) == "DQ", "DQ",
-                         ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
-                                result))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
+      result
+    )
+  )) %>%
   rename(nationality = country) %>%
   select(rank, name, nationality, result) %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "PB", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "SB", str_sub(result, 0, -3), result))) %>%
@@ -534,7 +850,7 @@ mens_2016_data <- mens_2016_data %>%
 
 ## 2016 Women -------------------------------------------------------------------------------------------------------
 
-url <- 'https://www.worldathletics.org/results/olympic-games/2016/the-xxxi-olympic-games-7093747/women/marathon/final/result'
+url <- "https://www.worldathletics.org/results/olympic-games/2016/the-xxxi-olympic-games-7093747/women/marathon/final/result"
 olympic_2016_raw_women <- gettxt(url)
 
 womens_2016_data <- olympic_2016_raw_women %>%
@@ -552,19 +868,26 @@ womens_2016_data <- womens_2016_data %>%
   separate(rank_number_name_country, into = c("rank_number", "name_country"), sep = "(?<=[0-9])\\s*(?=[a-zA-Z])") %>%
   ## stringr code from https://stackoverflow.com/questions/7963898/extracting-the-last-n-characters-from-a-string-in-r
   mutate(rank = ifelse(str_sub(name_country, -3, -1) == "DNS", NA,
-                       ifelse(str_sub(name_country, -3, -1) == "DNF", NA, str_sub(rank_number, 0, -5)))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF", NA, str_sub(rank_number, 0, -5))
+  )) %>%
   mutate(country = ifelse(str_sub(name_country, -3, -1) == "DNS", str_sub(name_country, -7, -5),
-                          ifelse(str_sub(name_country, -3, -1) == "DNF",
-                                 str_sub(name_country, -7, -5),
-                                 str_sub(name_country, -3, -1)))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, -7, -5),
+      str_sub(name_country, -3, -1)
+    )
+  )) %>%
   mutate(name = ifelse(str_sub(name_country, -3, -1) == "DNS",
-                       str_sub(name_country, 0, -9),
-                       ifelse(str_sub(name_country, -3, -1) == "DNF",
-                              str_sub(name_country, 0, -9),
-                              str_sub(name_country, 0, -4)))) %>%
+    str_sub(name_country, 0, -9),
+    ifelse(str_sub(name_country, -3, -1) == "DNF",
+      str_sub(name_country, 0, -9),
+      str_sub(name_country, 0, -4)
+    )
+  )) %>%
   mutate(result = ifelse(str_sub(name_country, -3, -1) == "DNS", "DNS",
-                         ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
-                                result))) %>%
+    ifelse(str_sub(name_country, -3, -1) == "DNF", "DNF",
+      result
+    )
+  )) %>%
   rename(nationality = country) %>%
   select(rank, name, nationality, result) %>%
   mutate(result = ifelse(str_sub(result, -2, -1) == "PB", str_sub(result, 0, -3), ifelse(str_sub(result, -2, -1) == "SB", str_sub(result, 0, -3), result))) %>%
@@ -602,7 +925,7 @@ full_data <- as.character(full_data)
 ## Makes all of the large series of spaces into just double spaces (so that they can be removed later, but that they are distinguishable from single spaces)
 ## gsub() from https://stackoverflow.com/questions/25707647/merge-multiple-spaces-to-single-space-remove-trailing-leading-spaces
 ## specific syntax from https://stackoverflow.com/questions/65033661/remove-multiple-spaces-but-leave-single-space-in-r
-full_data_no_extra_spaces <- gsub('\\s{2,}','  ',full_data)
+full_data_no_extra_spaces <- gsub("\\s{2,}", "  ", full_data)
 
 ## Converts the data into a Tibble
 full_data_as_tibble <- as_tibble(full_data_no_extra_spaces)
@@ -631,14 +954,16 @@ full_data_as_tibble_separated <- full_data_as_tibble %>%
 
   ## Assigns medals based on rank
   mutate(medal = ifelse(rank == "1", "G",
-                        ifelse(rank == "2", "S",
-                               ifelse(rank == "3", "B", NA)))) %>%
+    ifelse(rank == "2", "S",
+      ifelse(rank == "3", "B", NA)
+    )
+  )) %>%
 
   ## Removes athlete birthdate
   select(-date)
 
 ## Removes bib number, from https://stackoverflow.com/questions/13590139/remove-numbers-from-alphanumeric-characters
-full_data_as_tibble_separated$bib_last_first <- gsub('[[:digit:]]+', '', full_data_as_tibble_separated$bib_last_first)
+full_data_as_tibble_separated$bib_last_first <- gsub("[[:digit:]]+", "", full_data_as_tibble_separated$bib_last_first)
 
 ## Trims white space
 ## trimws from https://stat.ethz.ch/R-manual/R-patched/library/base/html/trimws.html
@@ -649,8 +974,8 @@ full_data_as_tibble_separated$bib_last_first <- full_data_as_tibble_separated$bi
 mens_2020_data <- full_data_as_tibble_separated %>%
   rename(name = bib_last_first) %>%
   separate(name, into = c("last", "first", "extra_name", "extra_name2"), sep = " ") %>%
-  mutate(last_name = ifelse(str_detect(first,"[[:lower:]]") == FALSE, paste0(last, " ", first), last)) %>%
-  mutate(first_name = ifelse(str_detect(first,"[[:lower:]]") == FALSE, extra_name, first)) %>%
+  mutate(last_name = ifelse(str_detect(first, "[[:lower:]]") == FALSE, paste0(last, " ", first), last)) %>%
+  mutate(first_name = ifelse(str_detect(first, "[[:lower:]]") == FALSE, extra_name, first)) %>%
   mutate(first_name = ifelse(is.na(extra_name2) == FALSE, paste0(first_name, " ", extra_name2), first_name)) %>%
   mutate(last_name = str_to_title(last_name)) %>%
   mutate(name = paste0(first_name, " ", last_name)) %>%
@@ -678,7 +1003,7 @@ full_data <- as.character(full_data)
 ## Makes all of the large series of spaces into just double spaces (so that they can be removed later, but that they are distinguishable from single spaces)
 ## gsub() from https://stackoverflow.com/questions/25707647/merge-multiple-spaces-to-single-space-remove-trailing-leading-spaces
 ## specific syntax from https://stackoverflow.com/questions/65033661/remove-multiple-spaces-but-leave-single-space-in-r
-full_data_no_extra_spaces <- gsub('\\s{2,}','  ',full_data)
+full_data_no_extra_spaces <- gsub("\\s{2,}", "  ", full_data)
 
 ## Converts the data into a Tibble
 full_data_as_tibble <- as_tibble(full_data_no_extra_spaces)
@@ -707,14 +1032,16 @@ full_data_as_tibble_separated <- full_data_as_tibble %>%
 
   ## Assigns medals based on rank
   mutate(medal = ifelse(rank == "1", "G",
-                        ifelse(rank == "2", "S",
-                               ifelse(rank == "3", "B", NA)))) %>%
+    ifelse(rank == "2", "S",
+      ifelse(rank == "3", "B", NA)
+    )
+  )) %>%
 
   ## Removes athlete birthdate
   select(-date)
 
 ## Removes bib number, from https://stackoverflow.com/questions/13590139/remove-numbers-from-alphanumeric-characters
-full_data_as_tibble_separated$bib_last_first <- gsub('[[:digit:]]+', '', full_data_as_tibble_separated$bib_last_first)
+full_data_as_tibble_separated$bib_last_first <- gsub("[[:digit:]]+", "", full_data_as_tibble_separated$bib_last_first)
 
 ## Trims white space
 ## trimws from https://stat.ethz.ch/R-manual/R-patched/library/base/html/trimws.html
@@ -725,8 +1052,8 @@ full_data_as_tibble_separated$bib_last_first <- full_data_as_tibble_separated$bi
 womens_2020_data <- full_data_as_tibble_separated %>%
   rename(name = bib_last_first) %>%
   separate(name, into = c("last", "first", "extra_name", "extra_name2", "extra name3"), sep = " ") %>%
-  mutate(last_name = ifelse(str_detect(first,"[[:lower:]]") == FALSE, paste0(last, " ", first), last)) %>%
-  mutate(first_name = ifelse(str_detect(first,"[[:lower:]]") == FALSE, extra_name, first)) %>%
+  mutate(last_name = ifelse(str_detect(first, "[[:lower:]]") == FALSE, paste0(last, " ", first), last)) %>%
+  mutate(first_name = ifelse(str_detect(first, "[[:lower:]]") == FALSE, extra_name, first)) %>%
   mutate(first_name = ifelse(is.na(extra_name2) == FALSE, paste0(first_name, " ", extra_name2), first_name)) %>%
   mutate(last_name = ifelse(first_name == "la CAPANI", "de la CRUZ CAPANI", last_name)) %>%
   mutate(first_name = ifelse(first_name == "la CAPANI", "Jovana", first_name)) %>%
@@ -735,7 +1062,13 @@ womens_2020_data <- full_data_as_tibble_separated %>%
   select(rank, name, nationality, result, gender, event, location, year, medal) %>%
   mutate(rank = as.numeric(rank))
 
-olympic_marathon <- mens_1996_data %>%
+olympic_marathon <- womens_1984_data %>%
+  rbind(mens_1984_data) %>%
+  rbind(womens_1988_data) %>%
+  rbind(mens_1988_data) %>%
+  rbind(womens_1992_data) %>%
+  rbind(mens_1992_data) %>%
+  rbind(mens_1996_data) %>%
   rbind(mens_2000_data) %>%
   rbind(mens_2004_data) %>%
   rbind(mens_2008_data) %>%
@@ -749,8 +1082,7 @@ olympic_marathon <- mens_1996_data %>%
   rbind(womens_2012_data) %>%
   rbind(womens_2016_data) %>%
   rbind(womens_2020_data) %>%
-  mutate(result = ifelse(str_sub(result, -2, -1) == "NR", str_sub(result, 0, -3), result))
+  mutate(result = ifelse(str_sub(result, -2, -1) %in% c("NR", "OR"), str_sub(result, 0, -3), result))
 
 
 usethis::use_data(olympic_marathon, overwrite = TRUE)
-

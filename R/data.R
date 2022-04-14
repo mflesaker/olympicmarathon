@@ -16,6 +16,6 @@
 #' \item{medal}{What medal the competitor earned, if any (G = Gold, S = Silver, B = Bronze)}
 #' }
 #' @examples olympic_marathon
-#' @source `olympic_marathon` comes from the [World Athletics website results page](https://www.worldathletics.org/competition/calendar-results?)
+#' @source `olympic_marathon` comes from the [World Athletics website results page](https://www.worldathletics.org/competition/calendar-results?) and [Olympian Database](https://www.olympiandatabase.com/)
 "olympic_marathon"
 
