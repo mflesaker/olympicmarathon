@@ -37,6 +37,7 @@ mens_1984_data <- mens_1984_data %>%
   mutate(rank = as.numeric(rank)) %>%
   mutate(result = ifelse(result %in% c("dns", "dnf"), str_to_upper(result), result)) %>%
   mutate(result = map(result, gsub, pattern = "\\.", replacement = ":")) %>%
+  mutate(result = map(result, gsub, pattern = "\\;", replacement = ":")) %>%
   mutate(name_country = trimws(name_country)) %>%
   mutate(nationality = str_sub(name_country, -3, -1)) %>%
   mutate(name = str_sub(name_country, 0, -5)) %>%
@@ -264,6 +265,7 @@ womens_1992_data <- womens_1992_data %>%
   mutate(year = 1992) %>%
   mutate(result = as.character(result)) %>%
   mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
+  mutate(result = map(result, gsub, pattern = "\\,", replacement = ":")) %>%
   select(rank, name, nationality, result, gender, event, location, year, medal)
 
 ## 1996
@@ -1088,7 +1090,8 @@ olympic_marathon <- womens_1984_data %>%
   rbind(womens_2012_data) %>%
   rbind(womens_2016_data) %>%
   rbind(womens_2020_data) %>%
-  mutate(result = ifelse(str_sub(result, -2, -1) %in% c("NR", "OR"), str_sub(result, 0, -3), result))
+  mutate(result = ifelse(str_sub(result, -2, -1) %in% c("NR", "OR"), str_sub(result, 0, -3), result)) %>%
+  mutate(result = trimws(result))
 
 
 usethis::use_data(olympic_marathon, overwrite = TRUE)
