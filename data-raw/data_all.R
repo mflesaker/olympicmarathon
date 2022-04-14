@@ -44,6 +44,7 @@ mens_1984_data <- mens_1984_data %>%
   mutate(event = "Marathon Men") %>%
   mutate(location = "Los Angeles") %>%
   mutate(year = 1984) %>%
+  mutate(result = as.character(result)) %>%
   mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
   select(rank, name, nationality, result, gender, event, location, year, medal)
 
@@ -86,6 +87,7 @@ womens_1984_data <- womens_1984_data %>%
   mutate(event = "Marathon Women") %>%
   mutate(location = "Los Angeles") %>%
   mutate(year = 1984) %>%
+  mutate(result = as.character(result)) %>%
   mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
   select(rank, name, nationality, result, gender, event, location, year, medal)
 
@@ -129,6 +131,7 @@ mens_1988_data <- mens_1988_data %>%
   mutate(event = "Marathon Men") %>%
   mutate(location = "Seoul") %>%
   mutate(year = 1988) %>%
+  mutate(result = as.character(result)) %>%
   mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
   select(rank, name, nationality, result, gender, event, location, year, medal)
 
@@ -171,6 +174,7 @@ womens_1988_data <- womens_1988_data %>%
   mutate(event = "Marathon Women") %>%
   mutate(location = "Seoul") %>%
   mutate(year = 1988) %>%
+  mutate(result = as.character(result)) %>%
   mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
   select(rank, name, nationality, result, gender, event, location, year, medal)
 
@@ -215,6 +219,7 @@ mens_1992_data <- mens_1992_data %>%
   mutate(event = "Marathon Men") %>%
   mutate(location = "Barcelona") %>%
   mutate(year = 1992) %>%
+  mutate(result = as.character(result)) %>%
   mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
   select(rank, name, nationality, result, gender, event, location, year, medal)
 
@@ -257,6 +262,7 @@ womens_1992_data <- womens_1992_data %>%
   mutate(event = "Marathon Women") %>%
   mutate(location = "Barcelona") %>%
   mutate(year = 1992) %>%
+  mutate(result = as.character(result)) %>%
   mutate(medal = ifelse(rank == "1", "G", ifelse(rank == "2", "S", ifelse(rank == "3", "B", NA)))) %>%
   select(rank, name, nationality, result, gender, event, location, year, medal)
 

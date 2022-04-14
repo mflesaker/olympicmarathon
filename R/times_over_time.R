@@ -8,6 +8,6 @@ times_over_time <- function(rank_choice, ...) {
     dplyr::mutate(result = hms::as_hms(result)) %>%
     ggplot2::ggplot(aes(x = year, y = result, color = gender)) +
     ggplot2::geom_point() +
-    ggplot2::scale_y_time(limits = c(hms::as_hms("00:00:00"), hms::as_hms("02:30:00"))) +
+    ggplot2::scale_y_time(limits = c(hms::as_hms("00:00:00"), hms::as_hms("02:45:00"))) +
     ggplot2::theme_minimal()
 }
