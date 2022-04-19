@@ -43,23 +43,20 @@ library(olympicmarathon)
 
 ## Example: Basic Data Extraction
 
-```{r example}
-
-library(tidyverse)
-
+```{r example1}
 ## Generate the winner of the 2020 Olympic Women's Marathon
 
 olympic_marathon %>%
-  filter(gender == "F") %>%
-  filter(year == 2020) %>%
-  filter(rank == 1) %>%
-  pull(name)
+  dplyr::filter(gender == "F") %>%
+  dplyr::filter(year == 2020) %>%
+  dplyr::filter(rank == 1) %>%
+  dplyr::pull(name)
   
 ```
 
 ## Example: Visualize Data
 
-```{r example}
+```{r example2}
 
 ## Show all finishing times 1984-2020
 

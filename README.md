@@ -17,7 +17,10 @@ Previously, data about Olympic marathons has been rather sparse, and
 official data is usually published in PDF form which creates barriers to
 performing analysis on it. This package aims to facilitate the viewing
 and analysis of the data by compiling it into one place for easy access
-and creating functionality for painless exploration.
+and creating functionality for painless exploration. The data is
+compiled from the [World Athletics
+Website](https://www.worldathletics.org/) and
+[OlympianDatabase.com](https://www.olympiandatabase.com/).
 
 ## Installation
 
@@ -38,20 +41,34 @@ library(olympicmarathon)
 
 ## Available Tables
 
--   `womens_2020_data`: dataset of the women who ran the 2020 Olympic
-    marathon
--   `mens_2020_data`: dataset of the men who ran the 2020 Olympic
-    marathon
+  - `olympic_marathon`: data set of men’s and women’s marathon results
+    from Olympic races 1984-2020
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
+## Example: Basic Data Extraction
 
 ``` r
-## basic example code
+## Generate the winner of the 2020 Olympic Women's Marathon
+
+olympic_marathon %>%
+  dplyr::filter(gender == "F") %>%
+  dplyr::filter(year == 2020) %>%
+  dplyr::filter(rank == 1) %>%
+  dplyr::pull(name)
+#> [1] "Peres Jepchirchir"
 ```
+
+## Example: Visualize Data
+
+``` r
+
+## Show all finishing times 1984-2020
+
+times_over_time()
+```
+
+<img src="man/figures/README-example2-1.png" width="100%" />
 
 ## Contributors
 
--   [Michelle Flesaker](https://github.com/mflesaker)
--   [Georgia Gans](https://github.com/georgiagans)
+  - [Michelle Flesaker](https://github.com/mflesaker)
+  - [Georgia Gans](https://github.com/georgiagans)
