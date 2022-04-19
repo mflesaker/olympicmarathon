@@ -24,6 +24,8 @@ two_country_viz <- function(nationality1, nationality2) {
     stop("nationality ", nationality1, " not found in data.")
   if(nationality2 %in% unlist(olympic_marathon %>% dplyr::select(nationality)) == FALSE)
     stop("nationality ", nationality2, " not found in data.")
+  if(nationality1 == nationality2)
+    stop("each input should be a distinct value")
 
   data_cpy <- olympic_marathon
   data_cpy <- data_cpy %>%
