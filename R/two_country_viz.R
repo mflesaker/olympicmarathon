@@ -1,7 +1,17 @@
 utils::globalVariables(c("olympic_marathon", "result", "nationality", "gender", "rank", "year", "country_gender"))
 
-## ggplot visualization of the finishing times of all competitors from two input countries (excluding DNF)
-
+#' Visualization of finishing times from two countries
+#'
+#' Creates a ggplot of the finishing times of all competitors from two input countries (excluding DNF)
+#'
+#' @param nationality1 3 character indicator for first nationality
+#' @param nationality2 3 character indicator for second nationality
+#'
+#' @return ggplot object
+#'
+#' @examples
+#' two_country_viz("ITA", "NOR")
+#'
 #' @export
 
 two_country_viz <- function(nationality1, nationality2) {
