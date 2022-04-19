@@ -39,7 +39,7 @@ library(olympicmarathon)
 ```
 
 ## Available Tables
- - `olympic_marathon`: data set of men's and women's marathon results from Olympic races 1996-2020
+ - `olympic_marathon`: data set of men's and women's marathon results from Olympic races 1984-2020
 
 ## Example
 
