@@ -2,4 +2,5 @@
 
 export("%>%")
 export(times_over_time)
+export(two_country_viz)
 importFrom(magrittr,"%>%")
