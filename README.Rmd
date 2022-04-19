@@ -41,9 +41,7 @@ library(olympicmarathon)
 ## Available Tables
  - `olympic_marathon`: data set of men's and women's marathon results from Olympic races 1984-2020
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
+## Example: Basic Data Extraction
 
 ```{r example}
 
@@ -56,6 +54,18 @@ olympic_marathon %>%
   filter(year == 2020) %>%
   filter(rank == 1) %>%
   pull(name)
+  
+```
+
+## Example: Visualize Data
+
+```{r example}
+
+library(tidyverse)
+
+## Show all finishing times 1984-2020
+
+times_over_time()
   
 ```
 
