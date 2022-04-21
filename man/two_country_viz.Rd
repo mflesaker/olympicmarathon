@@ -15,7 +15,7 @@ two_country_viz(nationality1, nationality2)
 ggplot object
 }
 \description{
-Creates a ggplot of the finishing times of all competitors from two input countries (excluding DNF)
+Creates a ggplot of the finishing times in \code{olympic_marathon} of all competitors from two input countries (excluding DNF)
 }
 \examples{
 two_country_viz("ITA", "NOR")
