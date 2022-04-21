@@ -13,6 +13,4 @@ olympicmarathon_sticker <- sticker(imgurl,
   geom_url(url = "https://github.com/mflesaker/olympicmarathon",
            size = 1.0)
 
-
-
 save_sticker(here::here("data-raw", "hex_olympicmarathon.png"), olympicmarathon_sticker)
