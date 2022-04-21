@@ -9,6 +9,7 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/olympicmarathon)](https://CRAN.R-project.org/package=olympicmarathon)
+[![R-CMD-check](https://github.com/mflesaker/olympicmarathon/workflows/R-CMD-check/badge.svg)](https://github.com/mflesaker/olympicmarathon/actions)
 <!-- badges: end -->
 
 `olympicmarathon` is an R package that contains historic data about
