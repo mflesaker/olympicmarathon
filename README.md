@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# olympicmarathon
+# olympicmarathon <img src='man/figures/logo.png' align="right" height="139"/>
 
 <!-- badges: start -->
 
@@ -41,7 +41,7 @@ library(olympicmarathon)
 
 ## Available Tables
 
-  - `olympic_marathon`: data set of men’s and women’s marathon results
+-   `olympic_marathon`: data set of men’s and women’s marathon results
     from Olympic races 1984-2020
 
 ## Example: Basic Data Extraction
@@ -60,7 +60,6 @@ olympic_marathon %>%
 ## Example: Visualize Data
 
 ``` r
-
 ## Show all finishing times 1984-2020
 
 times_over_time()
@@ -70,5 +69,5 @@ times_over_time()
 
 ## Contributors
 
-  - [Michelle Flesaker](https://github.com/mflesaker)
-  - [Georgia Gans](https://github.com/georgiagans)
+-   [Michelle Flesaker](https://github.com/mflesaker)
+-   [Georgia Gans](https://github.com/georgiagans)
