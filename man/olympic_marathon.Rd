@@ -5,11 +5,11 @@
 \alias{olympic_marathon}
 \title{Olympic Marathon Data by Gender and Year}
 \format{
-\code{olympic_marathon} is an object of class tbl_df (inherits from tbl, data.frame) with 1453 rows and 9 columns
+\code{olympic_marathon} is an object of class tbl_df (inherits from tbl, data.frame) with 1956 rows and 9 columns
 \describe{
 \item{rank}{Finishing place based on race time}
 \item{name}{Competitor's Name}
-\item{nationality}{3 letter abbreviation of the country that the competitor is representing}
+\item{nationality}{3 letter International Olympic Committee abbreviation of the country that the competitor is representing, see \href{https://en.wikipedia.org/wiki/List_of_IOC_country_codes}{Wikipedia}}
 \item{result}{The competitor's finishing time (hr:min:sec) (DNF if did not finish, DNS if did not start, DQ if disqualified)}
 \item{gender}{Gender of the competitor (F = female, M = male)}
 \item{event}{The Olympic event that the entry corresponds to}

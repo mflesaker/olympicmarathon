@@ -3,11 +3,11 @@
 #' @description
 #' `olympic_marathon` contains data from Olympics men's and women's marathons
 #' @usage olympic_marathon
-#' @format `olympic_marathon` is an object of class tbl_df (inherits from tbl, data.frame) with 1453 rows and 9 columns
+#' @format `olympic_marathon` is an object of class tbl_df (inherits from tbl, data.frame) with 1956 rows and 9 columns
 #' \describe{
 #' \item{rank}{Finishing place based on race time}
 #' \item{name}{Competitor's Name}
-#' \item{nationality}{3 letter abbreviation of the country that the competitor is representing}
+#' \item{nationality}{3 letter International Olympic Committee abbreviation of the country that the competitor is representing, see [Wikipedia](https://en.wikipedia.org/wiki/List_of_IOC_country_codes)}
 #' \item{result}{The competitor's finishing time (hr:min:sec) (DNF if did not finish, DNS if did not start, DQ if disqualified)}
 #' \item{gender}{Gender of the competitor (F = female, M = male)}
 #' \item{event}{The Olympic event that the entry corresponds to}
