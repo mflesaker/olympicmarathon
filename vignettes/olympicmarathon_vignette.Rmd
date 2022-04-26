@@ -12,7 +12,8 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.width = 6, fig.height = 4
 )
 ```
 
@@ -62,9 +63,17 @@ olympic_marathon %>%
   mutate(result = hms::as_hms(result))
 ```
 
+# Visualize the Data
 
+While we encourage exploring the data on your own, we provided two built-in functions to visualize the data.
 
+## times_over_time()
 
+`times_over_time` is a simple function provided by the package which takes no arguments. It displays every complete finishing time over the years by gender. 
+
+```{r}
+times_over_time()
+```
 
 
 
