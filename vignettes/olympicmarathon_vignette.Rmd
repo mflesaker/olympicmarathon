@@ -1,5 +1,5 @@
 ---
-title: "olympicmarathon Vignette"
+title: "Introduction to olympicmarathon"
 author: "Georgia Gans and Michelle Flesaker"
 date: "4/28/2022"
 output: rmarkdown::html_vignette
@@ -28,7 +28,7 @@ library(tidyverse)
 ```
 
 
-## The Data
+# The Data
 
 The key feature of this package is the data provided. The data comes in an .rda file called `olympic_marathon`; when loaded, this is a tibble and data frame with 9 columns and 1956 rows. Let's take a look at the data:
 
@@ -102,4 +102,7 @@ times_over_time()
 
 To turn this figure into an interactive plot, we recommend wrapping it in `ggplotly()` from the `plotly` package. Additional `ggplot` customization is available in a similar manner to what is described with `two_country_viz()` above.
 
+# Further Resources
+
+To load data from years prior to 1984, we recommend using the `gettxt()` function from the `htm2txt` package to gather data from the tables provided by the website [OlympianDatabase.com](https://www.olympiandatabase.com/index.php?id=417&L=1). Women were not permitted to run the Olympic Marathon until 1984, so there will be no women's results before then.
 
