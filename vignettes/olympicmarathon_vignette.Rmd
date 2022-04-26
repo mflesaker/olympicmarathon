@@ -78,9 +78,29 @@ times_over_time()
 To turn this figure into an interactive plot, we recommend wrapping it in `ggplotly()` from the `plotly` package. 
 
 
+## two_country_viz()
 
+The two_country_viz() function allows a user to quickly create a visualization of the data from two countries of choice. The function takes two inputs, each one being the appropriate three-letter country code for the desired countries. A ggplot object is created which shows all of the finishing times of competitors from the selected countries, plotted against the corresponding competition years,
 
+To see the finishing times of Italy and Japan, the following code will do the job:
 
+```{r}
+two_country_viz("ITA", "JPN")
+```
+
+Since this is a ggplot object, the user is able to edit many aspects of the visualization. For example, to edit the title of the plot, this code is useful:
+
+```{r}
+two_country_viz("ITA", "JPN") +
+  labs(title = "Results vs. Year for Italy and Japan")
+```
+
+Or we could add lines to better visualize the finishing times for one gender within one country:
+
+```{r}
+two_country_viz("ITA", "JPN") +
+  geom_line()
+```
 
 
 
