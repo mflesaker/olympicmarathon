@@ -7,6 +7,8 @@ Authors@R: c(person("Michelle Flesaker", "Developer", role = c("aut", "cre"),
 Description: The purpose of this package is to provide Olympic marathon data over time via simple functions. Additionally, the package provides tools for analyzing this data visually. 
 License: MIT + file LICENSE
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
@@ -22,3 +24,4 @@ Imports:
     hms
 Depends: 
     R (>= 2.10)
+VignetteBuilder: knitr

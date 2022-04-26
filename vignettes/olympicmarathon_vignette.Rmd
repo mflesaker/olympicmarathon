@@ -1,0 +1,71 @@
+---
+title: "olympicmarathon Vignette"
+author: "Georgia Gans and Michelle Flesaker"
+date: "4/28/2022"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{olympicmarathon_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+You can load the package using the following code:
+
+```{r setup, message = FALSE, warning = FALSE}
+library(olympicmarathon)
+```
+
+```{r, message = FALSE, warning = FALSE, include = FALSE}
+library(tidyverse)
+```
+
+
+## The Data
+
+The key feature of this package is the data provided. The data comes in an .rda file called `olympic_marathon`; when loaded, this is a tibble and data frame with 9 columns and 1956 rows. Let's take a look at the data:
+
+```{r}
+olympic_marathon %>%
+  head(10) %>%
+  knitr::kable(caption = "Glimpse of olympic_marathon Data")
+```
+
+You can review the documentation for this data, including variable descriptions, using the code.
+
+```{r}
+?olympic_marathon
+```
+
+This data frame contains data from all Olympic marathons, women and men, from 1984-2020, sourced from [World Athletics](https://www.worldathletics.org/) and [OlympianDatabase.com](https://www.olympiandatabase.com/index.php?id=417&L=1). 
+
+There are a few important things to note about this data. First, the Olympics held in 2021 in Tokyo were officially named "the 2020 Olympic Games" and are marked as such in the data. Second, note that the `nationality` column uses three-letter country codes from the International Olympic Committee. Please see the full list on [Wikipedia](https://en.wikipedia.org/wiki/List_of_IOC_country_codes). Additionally, those competitors who did not finish or were disqualified do not have a rank: their rank is marked NA. Lastly, those competitors who did not earn a medal have medal marked NA.
+
+When looking at results over time in visualizations or summary statistics, it's important to filter out those competitors who did not receive a finishing time. Those individuals having result marked "DNS" (did not start), "DNF" (did not finish), and "DQ" (disqualified). The code to filter out this individuals is below:
+
+```{r, eval = FALSE}
+olympic_marathon %>%
+  filter(!(result %in% c("DQ", "DNS", "DNF")))
+```
+
+Once these individuals are filtered out, we recommend the `as_hms` function from the `hms` package to convert the result column to a time format. This function will throw an error if those competitors who did not finish are not filtered out. 
+
+```{r, eval = FALSE}
+olympic_marathon %>%
+  filter(!(result %in% c("DQ", "DNS", "DNF"))) %>%
+  mutate(result = hms::as_hms(result))
+```
+
+
+
+
+
+
+
+
