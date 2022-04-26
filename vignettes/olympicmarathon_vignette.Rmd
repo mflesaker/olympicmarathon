@@ -38,7 +38,7 @@ olympic_marathon %>%
   knitr::kable(caption = "Glimpse of olympic_marathon Data")
 ```
 
-You can review the documentation for this data, including variable descriptions, using the code.
+You can review the documentation for this data, including variable descriptions, using the code:
 
 ```{r}
 ?olympic_marathon
@@ -67,20 +67,9 @@ olympic_marathon %>%
 
 While we encourage exploring the data on your own, we provided two built-in functions to visualize the data.
 
-## times_over_time()
-
-`times_over_time` is a simple function provided by the package which takes no arguments. It returns a ggplot figure which displays every complete finishing time over the years by gender. 
-
-```{r}
-times_over_time()
-```
-
-To turn this figure into an interactive plot, we recommend wrapping it in `ggplotly()` from the `plotly` package. 
-
-
 ## two_country_viz()
 
-The two_country_viz() function allows a user to quickly create a visualization of the data from two countries of choice. The function takes two inputs, each one being the appropriate three-letter country code for the desired countries. A ggplot object is created which shows all of the finishing times of competitors from the selected countries, plotted against the corresponding competition years,
+The `two_country_viz()` function allows a user to quickly create a visualization of the data from two countries of choice. The function takes two inputs, each one being the appropriate three-letter country code for the desired countries. A `ggplot` object is created which shows all of the finishing times of competitors from the selected countries, plotted against the corresponding competition years.
 
 To see the finishing times of Italy and Japan, the following code will do the job:
 
@@ -102,5 +91,15 @@ two_country_viz("ITA", "JPN") +
   geom_line()
 ```
 
+
+## times_over_time()
+
+`times_over_time()` is a simple function provided by the package which takes no arguments. It returns a `ggplot` figure which displays every complete finishing time over the years by gender. 
+
+```{r}
+times_over_time()
+```
+
+To turn this figure into an interactive plot, we recommend wrapping it in `ggplotly()` from the `plotly` package. Additional `ggplot` customization is available in a similar manner to what is described with `two_country_viz()` above.
 
 
