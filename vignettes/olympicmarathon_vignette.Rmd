@@ -69,11 +69,17 @@ While we encourage exploring the data on your own, we provided two built-in func
 
 ## times_over_time()
 
-`times_over_time` is a simple function provided by the package which takes no arguments. It displays every complete finishing time over the years by gender. 
+`times_over_time` is a simple function provided by the package which takes no arguments. It returns a ggplot figure which displays every complete finishing time over the years by gender. 
 
 ```{r}
 times_over_time()
 ```
+
+To turn this figure into an interactive plot, we recommend wrapping it in `ggplotly()` from the `plotly` package. 
+
+
+
+
 
 
 
