@@ -47,7 +47,7 @@ This data frame contains data from all Olympic marathons, women and men, from 19
 
 There are a few important things to note about this data. First, the Olympics held in 2021 in Tokyo were officially named "the 2020 Olympic Games" and are marked as such in the data. Second, note that the `nationality` column uses three-letter country codes from the International Olympic Committee. Please see the full list on [Wikipedia](https://en.wikipedia.org/wiki/List_of_IOC_country_codes). Additionally, those competitors who did not finish or were disqualified do not have a rank: their rank is marked NA. Lastly, those competitors who did not earn a medal have medal marked NA.
 
-When looking at results over time in visualizations or summary statistics, it's important to filter out those competitors who did not receive a finishing time. Those individuals have a result marked "DNS" (did not start), "DNF" (did not finish), and "DQ" (disqualified). The code to filter out this individuals is below:
+When looking at results over time in visualizations or summary statistics, it's important to filter out those competitors who did not receive a finishing time. Those individuals have a result marked "DNS" (did not start), "DNF" (did not finish), and "DQ" (disqualified). The code to filter out those individuals is below:
 
 ```{r, eval = FALSE}
 olympic_marathon %>%
